@@ -1,1 +1,6 @@
+1)How to get present working folder? Ans : basename "$pwd"
 
+2)How to copy files from local windows machine to cloud based Linux machine?
+
+3)A shell script named test.sh can accept 4 parameters i.e, a,b,c,d. the parameters wont be supplied in order always and 
+number of parameters might also vary( only 2 parameters user might supply sometimes), how to identify position of letter c?
