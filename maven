@@ -1,0 +1,42 @@
+when i issue mvn install what all things happen in background? image
+
+what are the settings you need to do before running mvn deploy? Ans : with respect where we are uploading our artifacts like jfrog,nexas etc we need to give the url of the reposiory and username and password of that remote repository.
+
+why maven takes much time for 1st execution and from 2nd execution it will take less time? Ans:so for the first time if we clone the repo it will store it in the .m2 folder so if we clone for the 2nd time it first check in the local repo and if it already exist then it will skip the cloaning, other then that it will clone.
+
+what is multi module project in maven and what are the setting you want to do in multi module parent and child project? what is dependency management?
+what is transitive dependency?
+
+.m2 is local repository for maven, now I don’t want to use .m2 folder as my local repository I want to use some other folder as my local, is it possible in maven? If yes, how would you do that? m2 folder is the default folder used by maven to store its: settings.xml file which specifies properties, like the central repository to download your dependencies, the location of the so-called localRepository. by default, the localRepository in which maven stores all the dependencies your project might need to run.
+mvn install -Dmaven.repo.local=/alternate/repo/location 
+maven follows convention over configuration that means it assumes code should be there under src/main/java, test cases under src/tests and many more.Here my requirement is I don’t want to follow that conventions I need to use different folder structure is that possible in maven?
+mvn help:effective-pom -Doutput=pom_eff.xml
+What are dependency and plugin in maven? Give one example for each? A Maven plugin is an addition you can utilize to create your artifact (maven-jar-plugin is used to make a jar out of your compiled classes and resources). A library required by the application you are building during compilation, test, or runtime is known as a dependency.
+
+What are 3 build life cycles in maven? There are three built-in build lifecycles. default: handles project build and deployment. clean: handles project cleaning. site: handles the creation of project site documentation.
+
+Maven Build Phases Maven build lifecycle goes through a set of stages, they are called build phases. For example, the default lifecycle is made up of the following phases.
+
+validate compile test package verify install deploy The build phases are executed sequentially. When we run a maven build command, we specify the phase to be executed. Any maven build phases that come before the specified phase is also executed. For example, if we run mvn package then it will execute validate, compile, test, and package phases of the project.
+
+Maven Build Goals A build phase is made up of a set of goals. Maven goals represent a specific task that contributes to the building and managing of a project. Sometimes, a maven goal is not bound to a build phase. We can execute these goals through the command line. The syntax to execute a goal
+
+In Which tag we will mention output artifact type( like jar, war or any other)?
+
+What are things you need to set, if you want download dependency from private repository ?
+What are the issues you faced while working on maven projects?
+Command to skip the test cases in maven
+
+what is multi module project?
+what is the importance of dependency managment?
+what are the settings that you need to do for mvn deploy ( to push artifcats to repository )?
+mvn version that you have used?
+
+Tell me 3 build lifecycle in maven? What does mvn site does?
+Is there way by which we can set local repository as some other custom directory, other than .m2?
+Settings that you make for mvn deploy?
+What is the default value of packaging tag? What other values for other artifact types?
+What are GAV's? 
+
+what are the tags that you came across in pom.xml?
+Explain maven life cycle?
