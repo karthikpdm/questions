@@ -26,3 +26,41 @@ What is shebang ? Why it is used?
 It is used to specify the interpreter with which the given script will be run by default. 
 The most common use of the Shebang is to specify the correct shell to use for a shell script. If a Shebang is
 not specified, the system uses the default interpreter belonging to the current shell
+
+Command to find empty files in a given directory?
+
+Commands you will use it for configuring ssh connectivity between 2 machines and what files will be present in .ssh folder?
+
+How to schedule a shell script in unix machines?
+
+Command to get load average ?
+
+Need to identify ip addresses in log file and count of ip addresses in log file?
+
+what is command for checking the running process? how to get PID of process?
+
+Command to get whether certain port is listing or not?
+
+How to indentify the number of params that has been sent to shell script?
+
+command to delete empty line in a file?
+
+You need to identify unused fields In values.yaml how would you approach this?
+
+What is exit status?
+
+Given machine, how will you identify which machine it is?
+
+
+
+Lets say you have a script that will take more than a day to execute, in this case how do you run that script. Also as user you might not able to keep machine in interactive mode for longer period.
+is it possible to store a commands output, either success or failure to the same file?
+what is debug mode in shell script?
+set of commands executed at multiples places in shell script, want to standardize that is it possible something like to define function?
+In shell script can we supply parameters to functions?
+what is the use of shift command?
+difference between break and exit 0 in shell script?
+delete files which are older than 10 days?
+delete empty files in a given directory?
+
+
