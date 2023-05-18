@@ -1,0 +1,44 @@
+Can we have multiple conatiners in a pod? Can we have similar conatiners in a pod?ans : no
+
+Lets say i have 4 conatiners, one of them has failed how would you check which container has failed? kubecl describe pods
+
+What is liveness and readiness probe? Why we need them? image
+
+Have you worked on kubernetes monitoring? Which tools you have used?
+
+Can we deploy a pod on particular node?
+
+what is init container and side-car container?can you give simple scenario where we use these conatiners?
+which one is default deployment strategy? how it works?
+command to check the container logs in pod?
+what are the types of services present in kubernetes?
+What is the link between pod and service?
+
+List objects you know in kubernetes?Give a brief about each object?
+Command to list pods and deployments
+
+Components in kubernetes architecture?
+What are stateful sets in kuberentes?
+Command to find which container has failed in pod and command to get logs of container
+Tools to maintain kubernetes log files
+
+What is Pod?
+Creation of cluster for k8s, can we have multi master and multi nodes cluster?
+On what basis the pod will be deployed on a specific node?
+Can we deploy pod on master node?
+What are steps that you might take to make one node into maintance?
+In the kubeadm setup the control plane components are created as pods, where the defination those pods will be defined?
+
+
+Why pods are not scheduled on master
+Why config maps are used
+What is the default deployment strategy
+Have you faced any issues while working k8s
+What is service account, role, role binding and namespace
+Why we need helm
+
+explain any 4 different types of pod statuses and also the reasons that why pod might go into that state?
+what are operators and give one example where we can use operator?
+what is the importance of kubeconfig file? Also lets say when you login to kuberenets by default it will pointed to default namespace, if i want list any objects which are other namespace need concate -n option for all the kubectl commands, is there a way we can set the namaspace to aviod -n option in all the commands?
+given a object how do we find api version and kind with respect to cluster?
+any work around to bring one pod out of rotation, when multiple replicas has been deployed?
