@@ -30,3 +30,5 @@ What is the importance of .dockerigonre file, can name docker file with any othe
 I need to delete all stopped containers and unused images command for that?
 How do you monitor docker in production
 Is it good to use docker compose in production
+How to copy files from host machine to container?
+docker cp filepath <container id>
