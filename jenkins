@@ -1,0 +1,56 @@
+How to save only last 5 builds of jenkins job?
+Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation and deletion? If i am building a maven project always docker container is fresh instance it will try to download dependency from repository, what measures you will take to reduce build time?
+Why we need multi branch pipeline?
+If you forget Jenkins password, how would you login back?
+
+Have you worked on commit based job in jenkins? what settings you need to do in jenkins and github to setup commit based job?
+you want to create 50 freestyle jobs with same configurations, but only change is job name. how would you achieve the same? Ans : take the declarative pipeline and go to the managejenkins--> scriptconsole-->past the dscript and run it will create the new job in the pipeline and also we can do it by using the for loop
+How can you copy job from your local jenkins instance to other local jenkins instance?
+
+How to Downgrade plugins in Jenkins? To manually downgrade the Jenkins Artifactory plugin: Shut down Jenkins. Delete the artifactory.jpi file and the artifactory folder from ${user_home}/.jenkins/plugins. Place the older artifactory.hpi file. Start Jenkins. Release Fast Or Die. Products. Artifactory.
+Have you worked on Jenkinsfile? Can we use different nodes for each stage?yes
+Can you list few ways by which we can trigger our build in Jenkins? (a) Trigger builds remotely : If you want to trigger your project built from anywhere anytime then you should select Trigger builds remotely option from the build triggers. You’ll need to provide an authorization token in the form of a string so that only those who know it would be able to remotely trigger this project’s builds. This provides the predefined URL to invoke this trigger remotely.
+(b) Build after other projects are built If your project depends on another project build then you should select Build after other projects are built option from the build triggers.
+
+In this, you must specify the project(Job) names in the Projects to watch field section and select one of the following options:
+
+Trigger only if the build is stable Note: A build is stable if it was built successfully and no publisher reports it as unstable
+
+Trigger even if the build is unstable Note: A build is unstable if it was built successfully and one or more publishers report it unstable
+
+Trigger even if the build fails
+
+(C)Build periodically: If you want to schedule your project build periodically then you should select the Build periodically option from the build triggers. You must specify the periodical duration of the project build in the scheduler field section
+
+(D)GitHub webhook trigger for GITScm polling: A webhook is an HTTP callback, an HTTP POST that occurs when something happens through a simple event-notification via HTTP POST.
+
+GitHub webhooks in Jenkins are used to trigger the build whenever a developer commits something to the branch. note:et’s see how to add build a webhook in GitHub and then add this webhook in Jenkins.
+
+Go to your project repository. Go to “settings” in the right corner. Click on “webhooks.” Click “Add webhooks.” Write the Payload URL as
+
+ (E) Poll SCM:
+Poll SCM periodically polls the SCM to check whether changes were made (i.e. new commits) and builds the project if new commits were pushed since the last build.
+
+You must schedule the polling duration in the scheduler field. Like we explained above in the Build periodically section. You can see the Build periodically section to know how to schedule. 19. What is the difference between Build Periodically and Poll SCM?
+
+How to set Jenkins build to fail based specific word in console output ?
+What are active and reactive parameters (Dynamic parameterization) in Jenkins ?
+How to customize the build number display to something else in Jenkins job page?
+What are multi branch pipeline?
+What is shared library in Jenkins ?
+
+what is the need of CICD tools?
+What type of Jenkinsfile you have worked on?
+In master slave setup if I want run job on specific node is is possible?
+what is the importance of Jenkins secrets?
+
+What are types jobs you have worked on??
+Can we have job for pr and once merge is done the source branch should be deleted?
+How do you take Jenkins backup?
+Can you tell me importance of post block??
+
+list of best practices to follow while writing Jenkins pipeline?
+Is it possible to run each stage on different agaent?
+Is it possible to change success or error message that we see in console ouput ?
+Have list of command that has to executed in certain directory in the code, is it possible to do the same?
+Can we have versioning on Jenkins freestyle job?
