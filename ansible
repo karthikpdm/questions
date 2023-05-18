@@ -30,3 +30,8 @@ Is it possible to set fact using ansible playbook?
 can we concate line to exsisting file in remote server, example exporting env variable in bashrc? ( also imporatnt when the playbook runs again if the value exsists then you should not insert)
 Difference between copy and template module?
 In one of the template file need to use remote machine ip, how do we read the machine ip value?
+What is the looping concept in Ansible?
+Ansible Loop | How to Use a Loop Keyword With Examples?
+Ansible loop is used to repeat any task or a part of code multiple times in an Ansible-playbook. It includes the creation of multiple users using the user module, installing multiple packages using apt or yum module or changing permissions on several files or folders using the file module.
+What is conditions in Ansible?
+Ansible “When” statement is a conditional statement that runs the particular task if the condition is met and the condition should be based on the registered variable output, loop, gathered facts, declared variable output, and to create the dependencies between the tasks that is when the output from the first task ...
