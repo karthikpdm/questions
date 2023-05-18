@@ -4,3 +4,10 @@
 
 3)A shell script named test.sh can accept 4 parameters i.e, a,b,c,d. the parameters wont be supplied in order always and 
 number of parameters might also vary( only 2 parameters user might supply sometimes), how to identify position of letter c?
+
+write a script which accepts file or folder, if its folder delete it else print "this is a file"?
+
+How to check whether particular port is already in use or not? Ans : netstat -tupln
+
+Logic for checking whether supplied string for a script is palindrome or not? what are all the commands you will use?
+command to get number of lines in a file?
