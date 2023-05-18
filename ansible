@@ -1,0 +1,32 @@
+Why we need ad-hoc ansible commands, scenario where you have used ansible ad-hoc command?
+When i need detailed logs on executing ansible playbook what option i need to use?
+what is ansible.cfg file?
+what are the modules have you worked on? which module will you use for getting the file from node to master?
+Lets say i have a playbook which has 5 tasks in playbook, first 2 tasks should run on local machine and other 3 tasks should run on node? Ans : 1) using the single play and the multiple play so in the multiple play we can mention the multiple hosts so in the first host we can run the 2 tasks amd in the other host we can run the other 3 tasks.
+usin the when condition also we can do this purpose.
+
+Lets say i have 4 machines consider 1 as ansible master other 3 as nodes, what are the basic setup you need to do for ansible cluster?
+what are ansible roles? why we need ansible roles? have you worked on ansible galaxy?
+What are ansible facts?
+Can we have windows machine as ansible master? as node?have you worked on any windows modules? can you list few?any extra configuration do we need to do?
+
+What is the best method to make your ansible YAML files reusable?
+What is ansible vault and ansible tower?
+Lets say I have playbook need to be run with Root user how would you do this?
+Difference between copy and fetch module?
+What is Ansible Galaxy? What is an Ansible galaxy? a)Ansible Galaxy is essentially a large public repository of Ansible roles. Roles ship with READMEs detailing the role's use and available variables. Galaxy contains a large number of roles that are constantly evolving and increasing. Galaxy can use git to add other role sources, such as GitHub b)Galaxy provides pre-packaged units of work known to Ansible as roles and collections. Content from roles and collections can be referenced in Ansible PlayBooks and immediately put to work. You'll find content for provisioning infrastructure, deploying applications, and all of the tasks you do everyday. c)Ansible is an open-source configuration management tool while Ansible Galaxy is a repository for Ansible roles. d)Ansible can communicate with configured clients from the command line by using ansible command. It also allows you to automate configuration by using ansible-playbook command. To create the base directory structure, you can use a tool bundled with Ansible which is known as ansible-galaxy.
+
+Why ansible ? What makes ansible powerful than other tools like chef and puppet?
+5 modules that you have worked on? Can we create custom module ?
+What is dynamic inventory in ansible?
+Lets say I have both Ubuntu and centos machines as nodes I want install application tree using same playbook, how would you approach this scenario?
+How to handle prompts with ansible playbook?
+
+What is ansible galaxy
+What are handlers and notify in ansible playbook
+What are adhoc commands
+
+Is it possible to set fact using ansible playbook?
+can we concate line to exsisting file in remote server, example exporting env variable in bashrc? ( also imporatnt when the playbook runs again if the value exsists then you should not insert)
+Difference between copy and template module?
+In one of the template file need to use remote machine ip, how do we read the machine ip value?
