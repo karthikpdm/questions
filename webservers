@@ -1,5 +1,6 @@
 1)How to check web server logs in apache2?
-A web server log is a text document that contains a record of all activity related to a specific web server over a defined period of time
+A web server log is a text document that contains a record of all activity related to a specific web server over a defined 
+period of time
 
 The tail command is a useful tool for viewing the last few lines of a file. It can be used to quickly check the Apache web 
 server logs in Linux. To use the tail command, open a terminal window and type the following command:
