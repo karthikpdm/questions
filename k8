@@ -16,6 +16,7 @@ which one is default deployment strategy? how it works?
 command to check the container logs in pod?
 what are the types of services present in kubernetes?
 Kubernetes cluster maintenance?
+If pod exceeds then what are the steps you take ?
 What is the link between pod and service?
 
 List objects you know in kubernetes?Give a brief about each object?
