@@ -1,5 +1,6 @@
 How to save only last 5 builds of jenkins job?
 jenkins shared library?
+How will you implement the maven lifecycle to the project explan breifly?
 Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation and deletion? If i am building a maven project always docker container is fresh instance it will try to download dependency from repository, what measures you will take to reduce build time?
 Why we need multi branch pipeline?
 If you forget Jenkins password, how would you login back?
