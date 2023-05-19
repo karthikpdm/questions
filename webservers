@@ -18,3 +18,5 @@ server in real-time and troubleshooting any issues that may arise.
 sudo tail -f /opt/tomcat/logs/catalina.out
 
 3)How to check web server logs?
+
+How developers will check the application logs?
