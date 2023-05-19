@@ -6,6 +6,7 @@
 number of parameters might also vary( only 2 parameters user might supply sometimes), how to identify position of letter c?
 
 write a script which accepts file or folder, if its folder delete it else print "this is a file"?
+Listing it’s link how to find that is hardlink or soft link tell me the command ?
 Rpm file in Linux ?
  Service vs process in Linux?
 
