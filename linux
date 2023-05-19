@@ -7,6 +7,7 @@ number of parameters might also vary( only 2 parameters user might supply someti
 
 write a script which accepts file or folder, if its folder delete it else print "this is a file"?
 Listing it’s link how to find that is hardlink or soft link tell me the command ?
+ Compare the two strings how to do it ?
 Rpm file in Linux ?
  Service vs process in Linux?
 
