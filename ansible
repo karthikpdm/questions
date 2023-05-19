@@ -1,5 +1,6 @@
 Why we need ad-hoc ansible commands, scenario where you have used ansible ad-hoc command?
 How many ways can you define hosts in ansible playbook?
+How to upgrade Ansible?
 When i need detailed logs on executing ansible playbook what option i need to use?
 what is ansible.cfg file?
 How to pass variables during playbook execution ?
