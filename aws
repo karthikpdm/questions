@@ -5,6 +5,7 @@ Aws- how do you retrieve keypair when lost ?
 How can you recover the data in instances when you lost private key?
 Volume is full due to which I am unable to install any application and also unable to login through ssh, what will be your approach ?
 How can you send request to Amazon S3 ?
+Persona a attach full access policies for a IAM role for s3 bucket, and person B attach restrict access for same bucket in same I am role. Can person A able to access it or not, why?
 You have file in s3 bucket which is storing the data continuously, you need to copy it for another s3 bucket as soon as it recieved the data, propose a solution?
 What are the ways to encrypt the data in S3?
 S3 bucket policy Types of police's?
