@@ -1,4 +1,5 @@
 Why we need ad-hoc ansible commands, scenario where you have used ansible ad-hoc command?
+How many ways can you define hosts in ansible playbook?
 When i need detailed logs on executing ansible playbook what option i need to use?
 what is ansible.cfg file?
 what are the modules have you worked on? which module will you use for getting the file from node to master?
