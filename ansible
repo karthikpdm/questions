@@ -3,6 +3,7 @@ How many ways can you define hosts in ansible playbook?
 How to upgrade Ansible?
 When i need detailed logs on executing ansible playbook what option i need to use?
 what is ansible.cfg file?
+What do you mean by handlers and write a playbook for a handler?
 Ansible dynamic inventry concept how ll u achieve that?
 How to pass variables during playbook execution ?
 what are the modules have you worked on? which module will you use for getting the file from node to master?
