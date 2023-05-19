@@ -2,6 +2,8 @@ What are roles and policies in AWS IAM?
 Vpc endpoint in AWS?
 What is OSI model ? Tell the layers ?
 Aws- how do you retrieve keypair when lost ?
+How can you recover the data in instances when you lost private key?
+Volume is full due to which I am unable to install any application and also unable to login through ssh, what will be your approach ?
 How can you send request to Amazon S3 ?
 What are the ways to encrypt the data in S3?
 S3 bucket policy Types of police's?
