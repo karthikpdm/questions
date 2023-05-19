@@ -1,6 +1,7 @@
 What are roles and policies in AWS IAM?
 Vpc endpoint in AWS?
 Aws- how do you retrieve keypair when lost ?
+How can you send request to Amazon S3 ?
 S3 bucket policy Types of police's?
 Lets say I have 50 users , for all 50 users I need to provide same privileges how do it?
 I want to give programmatic access means They can access AWS services via api’s But should not be access AWS web console
