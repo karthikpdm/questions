@@ -6,6 +6,7 @@ What are the plugins you used in jenkins?
 Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation and deletion? If i am building a maven project always docker container is fresh instance it will try to download dependency from repository, what measures you will take to reduce build time?
 Why we need multi branch pipeline?
 If you forget Jenkins password, how would you login back?
+How to handle the situation when you're port isn't  connecting in Jenkins?
 How the reviewer is notified on PR ?
 Jenkins pipeline stages like sonarqube how do you integrate and get the reports ?
 Instance and Jenkins connected, but Jenkins ui is not connecting and how do you troubleshoot, can you explain from first 🪜?
