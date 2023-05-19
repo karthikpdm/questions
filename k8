@@ -14,6 +14,7 @@ what is init container and side-car container?can you give simple scenario where
 which one is default deployment strategy? how it works?
 command to check the container logs in pod?
 what are the types of services present in kubernetes?
+Kubernetes cluster maintenance?
 What is the link between pod and service?
 
 List objects you know in kubernetes?Give a brief about each object?
