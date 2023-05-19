@@ -3,6 +3,7 @@ How many ways can you define hosts in ansible playbook?
 How to upgrade Ansible?
 When i need detailed logs on executing ansible playbook what option i need to use?
 what is ansible.cfg file?
+Ansible dynamic inventry concept how ll u achieve that?
 How to pass variables during playbook execution ?
 what are the modules have you worked on? which module will you use for getting the file from node to master?
 Lets say i have a playbook which has 5 tasks in playbook, first 2 tasks should run on local machine and other 3 tasks should run on node? Ans : 1) using the single play and the multiple play so in the multiple play we can mention the multiple hosts so in the first host we can run the 2 tasks amd in the other host we can run the other 3 tasks.
