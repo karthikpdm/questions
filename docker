@@ -5,6 +5,7 @@ command to clean-up docker host ( deleting stopped conatiners, dangling images a
 What version of docker you have used? Specific reason to use that particular version? Ans:
 Can we have multiple CMD in Dockerfile?
 Have you worked on docker swarm and docker compose?
+About alpine why it used and how to use it?
 
 Have you worked on multi-stage dockerfile and why we need that?
 Lets say i have container which is attached with a volume, if container crashes what happens to volume?
