@@ -8,6 +8,7 @@ usin the when condition also we can do this purpose.
 
 Lets say i have 4 machines consider 1 as ansible master other 3 as nodes, what are the basic setup you need to do for ansible cluster?
 what are ansible roles? why we need ansible roles? have you worked on ansible galaxy?
+Ansible play book for provisining Apache?
 What are ansible facts?
 Can we have windows machine as ansible master? as node?have you worked on any windows modules? can you list few?any extra configuration do we need to do?
 
