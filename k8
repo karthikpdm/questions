@@ -43,3 +43,12 @@ what is the importance of kubeconfig file? Also lets say when you login to kuber
 given a object how do we find api version and kind with respect to cluster?
 any work around to bring one pod out of rotation, when multiple replicas has been deployed?
 How will you connect application pod with data base pod?
+
+No, it is not possible to directly connect pods that are in different namespaces within a Kubernetes cluster. Kubernetes namespaces provide isolation and separation between resources, including pods. By default, pods in one namespace cannot communicate directly with pods in another namespace.
+However, there are a few ways to enable communication between pods in different namespaces:
+
+Cluster-wide network policy: You can create a network policy at the cluster level that allows communication between pods across namespaces. This approach requires a network plugin that supports network policies, such as Calico or Cilium. With a cluster-wide network policy, you can define rules to allow traffic between specific namespaces.
+
+Service-based communication: If you want to expose a pod in one namespace to another namespace, you can create a Kubernetes Service of type ClusterIP or NodePort in the source namespace and then access it from the target namespace. Services provide a stable endpoint for accessing pods, regardless of the namespace they are in.
+
+Ingress: If you have an Ingress controller set up in your cluster, you can configure rules to route traffic from one namespace to another. Ingress allows you to define rules for external access to services, and you can specify different namespaces as the target for incoming requests.
