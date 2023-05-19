@@ -14,3 +14,49 @@ Roles in IAM?
 I have 3 tier application, configure it with private and public subnet?
 How to replicate or create same machine with same configuration?
 Explain auto scalling in aws?
+what will u do if the instance is stopped and will u debug?
+To troubleshoot an instance, such as an EC2 instance in AWS, you can follow these steps:
+
+Check Instance Status: Verify the status of the instance in your cloud provider's console or CLI. Ensure that the instance is running and not experiencing any issues reported by the cloud provider.
+
+Review System Logs: Access the system logs of the instance to check for any error messages or warnings. The specific method to access system logs depends on the operating system and cloud provider. For example, in AWS, you can view the instance system logs through the EC2 console or by using the AWS CLI command aws ec2 get-console-output.
+
+Connect to the Instance: If the instance is accessible, connect to it using SSH (for Linux-based instances) or Remote Desktop Protocol (RDP) (for Windows-based instances). This allows you to directly interact with the instance's operating system.
+
+Check Networking: Ensure that the instance has a valid network configuration. Verify that the instance has a public IP address or is properly connected to the desired network, depending on your requirements. Check firewall settings or security groups to ensure necessary ports are open.
+
+Disk Space: Check the available disk space on the instance. If the disk is full or running low on space, it can cause issues. Clean up unnecessary files or increase the disk size if needed.
+
+Service Status: Check the status of critical services or applications running on the instance. Restart any services that may have stopped or are experiencing issues.
+
+Check Resource Utilization: Monitor CPU, memory, and disk usage on the instance. High resource utilization can impact performance. Identify any processes or applications consuming excessive resources and take appropriate actions.
+
+Security and Access: Review the security configuration of the instance. Ensure that appropriate security measures, such as firewalls, security groups, and access controls, are properly configured. Verify that SSH/RDP access is restricted to authorized users.
+
+Update and Patch: Ensure that the instance is up to date with the latest patches and updates. Install any necessary security updates or bug fixes to address known issues.
+
+Consult Documentation and Community: Refer to the documentation and support resources provided by your cloud provider. Additionally, search for similar issues or error messages in community forums or knowledge bases to find potential solutions.
+
+When troubleshooting networking issues on an instance, you can follow these steps:
+
+Check IP Configuration: Verify that the instance has a valid IP address assigned. Check if the IP address is static or dynamic, depending on your configuration. Ensure that the IP address is correctly configured for the network interface of the instance.
+
+Ping: Use the ping command to check network connectivity. Try pinging the IP address of a known working server or a public IP address. If the ping is successful, it indicates that there is network connectivity. If not, it may suggest a network connectivity problem.
+
+Example: ping <IP_address>
+
+Check DNS Resolution: Test DNS resolution by pinging a domain name instead of an IP address. If the ping fails for a domain name but succeeds for an IP address, it indicates a DNS resolution issue. Ensure that the DNS server configuration is correct or try using a different DNS server.
+
+Example: ping google.com
+
+Firewall and Security Group Rules: Review the firewall rules or security group settings associated with the instance. Ensure that the necessary ports are open for inbound and outbound traffic. Make sure the security groups allow the required protocols (e.g., TCP, UDP) and port numbers for your application or services.
+
+Check Routing: Verify the routing configuration of the instance. Ensure that the default gateway and routing table are correctly configured. Check if any custom routes or network address translation (NAT) settings are required for your network setup.
+
+Check Network Services: If the issue is specific to a particular network service (e.g., web server, database server), verify that the service is running and accessible. Check the service logs for any errors or warnings that may indicate a problem.
+
+Security and Access Control: Ensure that any security measures, such as firewalls or access control lists (ACLs), are properly configured. Review the network security settings to verify that the instance is allowed to communicate with the necessary resources.
+
+Network Monitoring Tools: Utilize network monitoring tools to gather additional information and insights about network traffic, latency, and connectivity. Tools like ping, traceroute, netstat, and packet capture utilities can provide valuable data for troubleshooting.
+
+Check with Cloud Provider: If the issue persists, consider reaching out to your cloud provider's support or consulting their documentation for specific troubleshooting steps related to their networking services.
