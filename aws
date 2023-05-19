@@ -1,6 +1,11 @@
 What are roles and policies in AWS IAM?
 Vpc endpoint in AWS?
 What is OSI model ? Tell the layers ?
+Ec2 is taking 3 sec to run how to do zero down time
+How to connect docker to docker from two diff ec2 
+How to check load in Linux 
+How to increase performance in Linux 
+Write a script to get log from aws ?
 Aws- how do you retrieve keypair when lost ?
 How can you recover the data in instances when you lost private key?
 Volume is full due to which I am unable to install any application and also unable to login through ssh, what will be your approach ?
