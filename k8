@@ -7,6 +7,7 @@ What is liveness and readiness probe? Why we need them? image
 Have you worked on kubernetes monitoring? Which tools you have used?
 How will you check master node when it is down?
 What is pod disruption projects?
+Ingress controller ?
 How to restart the pods?
 In K8s , how can you achieve zero downtime ?
 What are the steps or procedures to upgrade the kubernetes version? Have you involved in such upgrading kinda procedures?
