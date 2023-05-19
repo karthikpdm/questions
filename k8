@@ -5,6 +5,7 @@ Lets say i have 4 conatiners, one of them has failed how would you check which c
 What is liveness and readiness probe? Why we need them? image
 
 Have you worked on kubernetes monitoring? Which tools you have used?
+How to restart the pods?
 
 Can we deploy a pod on particular node?
 How will you connect application pod with data base pod?
