@@ -6,6 +6,8 @@ What is liveness and readiness probe? Why we need them? image
 
 Have you worked on kubernetes monitoring? Which tools you have used?
 How to restart the pods?
+How can you rectify logs in K8s?
+How to troubleshoot if the pod is not scheduled?
 Troubleshoot the pods and containers?
 
 Can we deploy a pod on particular node?
