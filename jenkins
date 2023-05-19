@@ -2,6 +2,7 @@ How to save only last 5 builds of jenkins job?
 Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation and deletion? If i am building a maven project always docker container is fresh instance it will try to download dependency from repository, what measures you will take to reduce build time?
 Why we need multi branch pipeline?
 If you forget Jenkins password, how would you login back?
+How to retrieve backup of a job?
 
 Have you worked on commit based job in jenkins? what settings you need to do in jenkins and github to setup commit based job?
 you want to create 50 freestyle jobs with same configurations, but only change is job name. how would you achieve the same? Ans : take the declarative pipeline and go to the managejenkins--> scriptconsole-->past the dscript and run it will create the new job in the pipeline and also we can do it by using the for loop
