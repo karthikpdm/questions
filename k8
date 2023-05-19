@@ -5,6 +5,11 @@ Lets say i have 4 conatiners, one of them has failed how would you check which c
 What is liveness and readiness probe? Why we need them? image
 
 Have you worked on kubernetes monitoring? Which tools you have used?
+You have pvc for a pod, unfortunately pod get scrashed, and client insisting you to get the sam pod without creating new one, how will you resolve?
+4. How CNI works?
+5. One specific thing you required, if you are accessing EKS cluster, what is that?
+6. your DB pod is having some issue and could not able to view complete application in application pod, how you resolve the issue?
+7. Your pod is working fine, all of a sudden it shows crashloopback of error, what may be causing that uissue and what is your approach to resolve it?
 How will you check master node when it is down?
 What is pod disruption projects?
 Ingress controller ?
