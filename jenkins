@@ -6,6 +6,7 @@ What are the plugins you used in jenkins?
 You have two clusters and seperate applications are deployed in seperate cluster, how will you achieve this using CICD?
 Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation and deletion? If i am building a maven project always docker container is fresh instance it will try to download dependency from repository, what measures you will take to reduce build time?
 Why we need multi branch pipeline?
+How to deploy bash code to cicd ?
 If you forget Jenkins password, how would you login back?
 How to handle the situation when you're port isn't  connecting in Jenkins?
 How the reviewer is notified on PR ?
