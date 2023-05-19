@@ -3,6 +3,7 @@ Can we have multiple conatiners in a pod? Can we have similar conatiners in a po
 Lets say i have 4 conatiners, one of them has failed how would you check which container has failed? kubecl describe pods
 
 What is liveness and readiness probe? Why we need them? image
+How to manages eks ?
 
 Have you worked on kubernetes monitoring? Which tools you have used?
 You have pvc for a pod, unfortunately pod get scrashed, and client insisting you to get the sam pod without creating new one, how will you resolve?
