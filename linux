@@ -1,74 +1,257 @@
-1)How to get present working folder? Ans : basename "$pwd"
+1)How to get present working folder? 
+Ans : basename "$pwd"
+==================================================================================================================================
 
 2)How to copy files from local windows machine to cloud based Linux machine?
+ans: using scp we can copy from windows to the linux as well
+scp /mnt/c/path/to/file.txt username@linux-machine-ip:/path/on/linux
+
+==================================================================================================================================
 
 3)A shell script named test.sh can accept 4 parameters i.e, a,b,c,d. the parameters wont be supplied in order always and 
 number of parameters might also vary( only 2 parameters user might supply sometimes), how to identify position of letter c?
+==================================================================================================================================
 
 write a script which accepts file or folder, if its folder delete it else print "this is a file"?
+==================================================================================================================================
 Listing it’s link how to find that is hardlink or soft link tell me the command ?
- Compare the two strings how to do it ?
-Rpm file in Linux ?
- Service vs process in Linux?
+-rw-r--r-- 1 user group  1024 May 20 10:30 file.txt
+drwxr-xr-x 2 user group  4096 May 20 10:30 directory
+-rw-r--r-- 1 user group  1024 May 20 10:30 hardlink
+lrwxrwxrwx 1 user group     6 May 20 10:30 softlink -> target
 
-How to check whether particular port is already in use or not? Ans : netstat -tupln
+If the entry is a regular file, it will not have any special symbol at the beginning of the permissions string. 
+In the example above, file.txt is a regular file.
+
+If the entry is a directory, it will have a d at the beginning of the permissions string. In the example above, directory is a 
+directory.
+
+If the entry is a hard link, it will have the same permissions and ownership as the target file, and the link count will be greater
+than 1. In the example above, hardlink is a hard link.
+
+If the entry is a symbolic (soft) link, it will have an l at the beginning of the permissions string, followed by the path of the 
+target file or directory. In the example above, softlink is a symbolic link pointing to target.
+
+==================================================================================================================================
+ Compare the two strings how to do it ?
+ string1="Hello"
+string2="World"
+
+if [ "$string1" != "$string2" ]; then
+    echo "The strings are not equal"
+else
+    echo "The strings are equal"
+fi
+ ==================================================================================================================================
+Rpm file in Linux ?
+ans:In Linux, RPM (Red Hat Package Manager) is a package management system used primarily by Red Hat-based distributions, such as 
+Red Hat Enterprise Linux (RHEL), CentOS, and Fedora. RPM files are packages that contain software, including binaries, libraries, 
+configuration files, and installation scripts. 
+==================================================================================================================================
+ Service vs process in Linux?
+ ans:
+ Process: A process is an executing instance of a program. It represents a running program along with its current state, including 
+ memory, open files, and other resources. Each process is assigned a unique process ID (PID) by the operating system. Processes can
+ interact with the system and other processes, and they can be managed and controlled by the operating system.
+
+Service: A service is a background process or program that provides specific functionality or performs specific tasks on a Linux 
+system. Services are typically long-running processes that operate independently of user interaction. They often provide critical 
+system functions, such as network services (like web servers or database servers) or system daemons (like cron or SSH).
+Services are usually started during system boot and run continuously in the background, waiting for requests or events.
+ ==================================================================================================================================
+
+How to check whether particular port is already in use or not? 
+Ans :
+Using netstat: The netstat command can display active network connections and listening ports. To check if a specific port is in use,
+you can run the following command:
+netstat -tuln | grep -i <port_number>
+or
+netstat -a | grep <port_number>
+
+==================================================================================================================================
 
 Logic for checking whether supplied string for a script is palindrome or not? what are all the commands you will use?
+==================================================================================================================================
 command to get number of lines in a file?
+cat <file_name> | wc -l
+or wc -l <file_name>
+==================================================================================================================================
 
 In a file I have ip addresses , I want list unique ip addresses with number of times its present in file?
-grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" logfile | sort | uniq -c | sort -nr
+ans:
+grep -ic <ip> <file_name>
+or
+sort <filename> | uniq -c
 
+==================================================================================================================================
 What is exit status in UNIX? Exit status is an integer number.
-0 exit status means the command was successful without any errors. A non-zero (1-255 values) exit status means command was a failure.
+0 exit status means the command was successful without any errors. 
+A non-zero (1-255 values) exit status means command was a failure.
 
+==================================================================================================================================
 Lets say I have shell script name magic.sh when I execute. It gives “This is from magic.sh”, so now if I change file
 name to magic-test.sh I should get “This is from magic-test.sh” basically as name of file chages my output should also change? 
-echo $0
+#!/bin/bash
 
+filename=$(basename "$0")
+
+if [[ $filename == *"magic.sh" ]]; then
+    echo "This is from magic.sh"
+elif [[ $filename == *"magic-test.sh" ]]; then
+    echo "This is from magic-test.sh"
+else
+    echo "Unknown script name"
+fi
+
+==================================================================================================================================
 What is shebang ? Why it is used? 
 It is used to specify the interpreter with which the given script will be run by default. 
 The most common use of the Shebang is to specify the correct shell to use for a shell script. If a Shebang is
 not specified, the system uses the default interpreter belonging to the current shell
-
+In summary, the shebang is used to specify the interpreter or command that should execute a script. It allows for portability,
+convenience, and the ability to execute scripts without explicitly specifying the interpreter each time.
+==================================================================================================================================
 Command to find empty files in a given directory?
+ans:
+find . -type f -empty
+find <directory_path> -type f -empty
 
+==================================================================================================================================
 Commands you will use it for configuring ssh connectivity between 2 machines and what files will be present in .ssh folder?
+In the .ssh folder, you will typically find the following files and directories:
+
+id_rsa: The private key file.
+id_rsa.pub: The public key file.
+known_hosts: A file that stores the public keys of remote hosts that you have connected to in the past.
+config: An optional file that allows you to define SSH configurations, such as aliases, port numbers, or specific options for hosts.
+==================================================================================================================================
 
 How to schedule a shell script in unix machines?
+* * * * * /path/to/script.sh
+
+==================================================================================================================================
 
 Command to get load average ?
+uptime
+==================================================================================================================================
 Write a shell script for given user is a root user or not and how to add a user using shell script?
+#!/bin/bash
+
+# Check if the script is run as root
+if [[ $(id -u) -eq 0 ]]; then
+    echo "Current user is root."
+else
+    echo "Current user is not root."
+fi
+or
+#!/bin/bash
+
+# Check if the current user is root
+if [[ "$USER" == "root" ]]; then
+    echo "Current user has root permissions."
+else
+    echo "Current user does not have root permissions."
+fi
+
+
+it can be found in terminal as well using the commansd
+1)Using the id command
+id -u
+
+The id -u command retrieves the user ID of the current user.
+If the user ID is 0, it indicates that the user has root permissions.
+If the user ID is not 0, it indicates that the user does not have root permissions.
+
+2)Checking the $USER environment variable:
+echo $USER
+
+The $USER environment variable contains the username of the current user.
+If the value of $USER is "root", it indicates that the user has root permissions.
+If the value of $USER is not "root", it indicates that the user does not have root permissions.
+==================================================================================================================================
+how to add the user as root user?
+ans:
+add the user to the sudo group
+usermod -aG sudo username
+ to list the group - cat /etc/group
+
+==================================================================================================================================
 
 Need to identify ip addresses in log file and count of ip addresses in log file?
-
+ans:
+grep -ic <ip> <logfile>
+==================================================================================================================================
 To clean the swap  memory what is the command?
+wap memory, also known as swap space or virtual memory, is a concept in operating systems, including Linux, that provides a way 
+to extend the available memory beyond the physical RAM (Random Access Memory) capacity of a system. It serves as a temporary 
+storage area for data that is not actively used by the system.
+
+When the physical memory becomes full, the operating system moves less frequently accessed or inactive data from RAM to the swap
+space. This frees up the physical memory for more immediate and active data. When the swapped-out data is needed again, it is moved
+back from the swap space to the RAM.
+
+Swap memory plays a vital role in preventing or reducing the occurrence of memory-related issues like out-of-memory errors. 
+It allows the system to handle situations where the demand for memory exceeds the available physical RAM.
+
+Some key points about swap memory:
+
+Swap memory is typically stored on a dedicated partition on the hard drive or as a swap file within the file system.
+The size of the swap space can be configured during the system installation or adjusted later to meet the system requirements.
+Excessive swapping (frequent moving of data between RAM and swap) can lead to performance degradation, as disk I/O is slower 
+compared to accessing data from RAM.
+Monitoring swap usage can help identify if a system is experiencing memory pressure and may require additional physical RAM.
+==================================================================================================================================
 
 what is command for checking the running process? how to get PID of process?
-
-Command to get whether certain port is listing or not?
-
+ps -ef | grep <processname>
+==================================================================================================================================
 How to indentify the number of params that has been sent to shell script?
+$#
+==================================================================================================================================
 
 command to delete empty line in a file?
 
+==================================================================================================================================
 You need to identify unused fields In values.yaml how would you approach this?
 
+==================================================================================================================================
 What is exit status?
+==================================================================================================================================
 
 Given machine, how will you identify which machine it is?
+ans:
+hostname: This command will display the hostname of the machine you are logged into.
+uname -a: This command will provide detailed information about the system, including the machine's hostname.
+==================================================================================================================================
 
-
-
-Lets say you have a script that will take more than a day to execute, in this case how do you run that script. Also as user you might not able to keep machine in interactive mode for longer period.
+Lets say you have a script that will take more than a day to execute, in this case how do you run that script. Also as user you 
+might not able to keep machine in interactive mode for longer period.
 is it possible to store a commands output, either success or failure to the same file?
+
+1)Running in the background:
+You can run the script in the background by appending an ampersand (&) at the end of the command
+./long_running_script.sh &
+2)Using nohup:
+The nohup command is used to run a command or script that continues running even after you log out or close the terminal. 
+nohup ./long_running_script.sh &
+
+==================================================================================================================================
 what is debug mode in shell script?
+==================================================================================================================================
 set of commands executed at multiples places in shell script, want to standardize that is it possible something like to define function?
+==================================================================================================================================
 In shell script can we supply parameters to functions?
+==================================================================================================================================
 what is the use of shift command?
+==================================================================================================================================
 difference between break and exit 0 in shell script?
+==================================================================================================================================
 delete files which are older than 10 days?
+==================================================================================================================================
 delete empty files in a given directory?
+==================================================================================================================================
+
 About LVM?
+==================================================================================================================================
 
 
