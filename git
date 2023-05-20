@@ -74,6 +74,8 @@ operations, while the server-side hooks are triggered on the remote repository w
 ===================================================================================================================================
 
 what is the importance .git directory?
+The .git directory is a hidden directory that is created when you initialize a Git repository in a project directory. It serves 
+as the backbone of the Git repository, storing all the necessary information and metadata about the project's version control history.
 it nonbare repo the .git folder will be present 
 where it contains all the configutation information with the remote repo will be there and the metadata about the repo
 ===================================================================================================================================
@@ -93,6 +95,7 @@ What is git squash?
 Branching strategy used in your project?
 ===================================================================================================================================
 Command to list all commits?
+git log --oneline
 ===================================================================================================================================
 
 Branching strategy?
@@ -100,3 +103,8 @@ Branching strategy?
 Need a script which identify inactive branches ( no commits since 2 months )?
 ===================================================================================================================================
 How to set configs globally in git?
+git config --global user.email "your.email@example.com"
+git config --global user.name "Your Name"
+
+
+git config global email.name
