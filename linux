@@ -241,17 +241,47 @@ what is debug mode in shell script?
 set of commands executed at multiples places in shell script, want to standardize that is it possible something like to define function?
 ==================================================================================================================================
 In shell script can we supply parameters to functions?
+ yes, you can supply parameters to functions in shell scripts, allowing you to make your code more modular and reusable.
 ==================================================================================================================================
 what is the use of shift command?
+The shift command is often used in combination with loops to iterate over the remaining parameters in a flexible and dynamic 
+manner. It allows you to handle an arbitrary number of arguments without explicitly referring to each positional parameter by its number
 ==================================================================================================================================
 difference between break and exit 0 in shell script?
+break is used to exit loops prematurely, while exit is used to terminate the entire script. The exit command is typically used to
+indicate the success or failure of a script by setting an exit status.
 ==================================================================================================================================
 delete files which are older than 10 days?
+find . -type f -mtime +10
 ==================================================================================================================================
 delete empty files in a given directory?
 ==================================================================================================================================
 
 About LVM?
+VM (Logical Volume Manager) is a storage management technology for Linux systems. It provides a flexible and scalable way to manage
+disk space by abstracting physical storage devices into logical volumes, allowing for easy management and resizing of storage
+resources.
+
+Here are some key concepts and features of LVM:
+
+Physical Volumes (PVs): These are the physical storage devices such as hard drives or solid-state drives that are added to the LVM.
+PVs are divided into fixed-size physical extents.
+
+Volume Groups (VGs): VGs are created by combining one or more PVs. They act as a pool of storage from which logical volumes are 
+created. VGs provide the ability to dynamically add or remove PVs, allowing for easy capacity expansion or migration.
+
+Logical Volumes (LVs): LVs are the virtual partitions created within a VG. They function as block devices and are used to store
+file systems, similar to traditional partitions. LVs have flexible sizing and can be easily resized or moved across PVs within a VG.
+
+LVM Thin Provisioning: LVM supports thin provisioning, which allows you to create LVs that initially occupy minimal space and grow 
+dynamically as data is added. This enables efficient utilization of storage resources.
+
+Snapshots: LVM provides the ability to create point-in-time snapshots of LVs. Snapshots capture the state of a LV at a specific 
+moment, allowing for data recovery or backup purposes.
+
+LVM Mirroring and Striping: LVM supports mirroring and striping of LVs to enhance data availability and performance. Mirroring 
+creates duplicate copies of LVs on separate PVs, providing redundancy, while striping distributes data across multiple PVs, 
+improving I/O performance
 ==================================================================================================================================
 
 
