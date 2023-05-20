@@ -1,6 +1,15 @@
 Why we need git? What makes git unique from other tools like SVN?
 Let's say i have maven repo cloned on to my local, did some changes and i have build the code now target folder will be generated. So now when i do git operations like git add, git commit or any other git operations target folder should not be considered, how would you achieve the same? ans : use .gitignore
 difference between git pull and git fetch?
+
+By what method will you know in Git if a branch has just been combined into master?
+The appropriate response is immediate.
+
+To know whether a branch has been merged into master or not you can utilize the below commands:
+
+git branch - merged It records the branches that have been merged into the present branch.
+
+git branch - no merged It records the branches that have not been merged.
 How to clone specific branch in git? Ans : git clone -b <baranch_name> --single-branch url after we list the branches using the git branch -a it will list that particular branch only
 
 Lets say your organization has github and bitbucket to store code, you have cloned a repo onto your local and changed directory name. after some days one of your team members asks you to share clone link, how would you provide the same? Ans: git remote -v so that we can get a orgin of the repo
@@ -16,6 +25,11 @@ command to list all branches in a repo? git branch -a
 What is git reset ? Types of reset ?
 How to delete local branch and remote branch in git ?
 Difference between git diff and git status ?
+what is git show?
+The git show command is used to display detailed information about a specific commit in a Git repository. 
+It shows the commit's metadata, including the commit message, author, date, and the changes introduced in the commit.
+git show <commit>
+
 What are hooks in git?
 
 what is the importance .git directory?
