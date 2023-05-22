@@ -1,27 +1,323 @@
 How to save only last 5 builds of jenkins job?
+As:using build discarder
+=====================================================================================================================================
 jenkins shared library?
+=====================================================================================================================================
 What is the domain specific language (DSL) in Jenkins?
+The Domain-Specific Language (DSL) in Jenkins refers to a set of Groovy-based scripts that allow you to define and configure 
+Jenkins jobs programmatically. It provides a way to describe the desired job configurations using a concise and expressive 
+syntax, rather than manually configuring jobs through the Jenkins user interface.
+
+With the DSL, you can define jobs, build steps, triggers, publishers, and other aspects of Jenkins job configurations using code.
+=====================================================================================================================================
 How will you implement the maven lifecycle to the project explan breifly?
+
+To implement the Maven lifecycle in a project, you need to define the build phases and configure the corresponding plugins and 
+goals to execute during each phase. Here's a brief explanation of the Maven lifecycle and its implementation steps:
+
+Maven Lifecycle: The Maven lifecycle consists of a predefined sequence of phases, each representing a specific stage in the 
+build process. The three main lifecycles in Maven are "clean," "default," and "site." The "default" lifecycle is the 
+most commonly used and includes phases such as compile, test, package, install, and deploy.
+
+POM Configuration: In your project's pom.xml file, you define the build plugins and their corresponding goals that should be executed 
+during each phase of the lifecycle. The plugins provide the necessary functionalities, such as compiling code, running tests, packaging 
+the application, etc.
+
+Build Phases: The build phases represent the stages in the build process. They are executed sequentially during the Maven build. 
+For example, the compile phase compiles the source code, the test phase runs the unit tests, the package phase creates a distributable
+package, and so on.
+
+Plugin Configuration: Each plugin used in the build process can be configured within the <plugins> section of the pom.xml file. You 
+specify the plugin's coordinates (group ID, artifact ID, version), define its configuration parameters, and bind it to specific build 
+phases using the <executions> block.
+
+Lifecycle Bindings: Maven's lifecycle bindings allow you to bind plugins to specific build phases explicitly. By default, Maven uses 
+conventions to determine which plugins to execute in each phase based on the plugin's default lifecycle bindings. However, you can 
+override or customize these bindings as needed.
+
+Custom Goals: In addition to the predefined build phases, you can define custom goals and bind them to specific phases. This allows 
+you to extend the default build lifecycle with your own custom actions.
+
+By configuring the build plugins and their goals within the pom.xml file and utilizing the appropriate lifecycle phases, Maven ensures
+the consistent execution of build tasks and provides a standardized approach to managing the build process.
+
+It's important to note that Maven enforces convention over configuration, so it's generally recommended to follow Maven's conventions 
+and best practices to leverage its full power. However, Maven also provides flexibility to customize and extend the build process
+when necessary.
+=====================================================================================================================================
 What are the plugins you used in jenkins?
+Git Plugin: Provides integration with Git repositories, allowing Jenkins to clone and fetch source code from Git repositories.
+
+Pipeline Plugin: Enables the creation and execution of Jenkins Pipelines, which allows you to define complex build workflows as code.
+
+GitHub Plugin: Integrates Jenkins with GitHub, providing features like triggering builds on GitHub events, reporting build status 
+back to GitHub, and more.
+
+Credentials Plugin: Manages and provides a secure way to store and use credentials (such as usernames, passwords, API keys) within
+Jenkins.
+Docker Plugin: Integrates Jenkins with Docker, allowing you to build, publish, and deploy Docker images as part of your build process.
+
+Artifactory Plugin: Integrates Jenkins with Artifactory, a binary repository manager, enabling the storage and retrieval of build
+artifacts.
+
+Deploy to Container Plugin: Facilitates the deployment of applications to application servers or containers such as Tomcat, JBoss,
+Docker, etc.
+
+Email Extension Plugin: Extends Jenkins' email notifications capabilities, allowing customized email content, recipients, triggers, 
+nd attachments.
+=====================================================================================================================================
 You have two clusters and seperate applications are deployed in seperate cluster, how will you achieve this using CICD?
-Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation and deletion? If i am building a maven project always docker container is fresh instance it will try to download dependency from repository, what measures you will take to reduce build time?
+=====================================================================================================================================
+Have you worked on Jenknsfile? can we use docker container as a node in Jenkinsfile? Who will handle docker container creation 
+and deletion?
+Yes, I'm familiar with Jenkinsfiles and using Docker containers as Jenkins agents. In Jenkins, you can define your build pipeline 
+using a Jenkinsfile, which is a Groovy-based script that allows you to define the entire build process, including stages, steps, 
+and configurations.
+To use a Docker container as a Jenkins agent in a Jenkinsfile, you can use the docker agent directive.
+pipeline {
+    agent {
+        docker {
+            image 'my-docker-image:tag'
+            label 'docker-agent'
+        }
+    }
+    
+Regarding the creation and deletion of Docker containers used as Jenkins agents, Jenkins itself manages this process. When a Jenkins
+pipeline using a Docker agent starts, Jenkins will dynamically create a Docker container based on the specified image, configure it
+as a Jenkins agent, and allocate it for the pipeline execution. Once the pipeline execution is completed or the agent is no longer 
+needed, Jenkins will automatically remove the Docker container.
+
+Jenkins handles the management of Docker containers as Jenkins agents, including their creation, allocation, and deletion, based on
+the configuration specified in the Jenkinsfile and the availability of resources in the Jenkins environment.
+
+=====================================================================================================================================
+If i am building a maven project always docker container is fresh instance it will try to download dependency 
+from repository, what measures you will take to reduce build time?
+To reduce build time in a Maven project using Docker containers, you can consider the following measures:
+
+Caching Maven dependencies:     Set up a local Maven repository cache on the Docker host machine. By caching the Maven dependencies 
+locally, subsequent builds can avoid downloading dependencies from the remote repository if they have not changed. This can 
+significantly reduce build time, especially when working with large dependencies or slow network connections. You can mount the local
+Maven repository cache as a volume inside the Docker container to make it accessible during the build process.
+
+Multi-stage builds:     Utilize multi-stage builds in Docker to optimize the build process. With multi-stage builds, you can have one
+stage responsible for downloading and resolving dependencies, and another stage for building and packaging the project. This approach
+ensures that dependencies are only downloaded once, and subsequent builds can reuse the resolved dependencies from the previous build 
+stage. This can greatly improve build time, as the time-consuming dependency resolution step is skipped if the dependencies haven't
+changed.
+
+Build caching: Take advantage of Docker build caching by properly structuring your Dockerfile. Ensure that the frequently changing 
+parts of the build process are placed towards the end of the Dockerfile, while the static parts are placed towards the beginning. 
+This allows Docker to cache the intermediate layers of the image, reducing the need to rebuild them if there are no changes. It is 
+important to ensure that the build steps that change frequently are designed in a way that they invalidate the cache only when 
+necessary.
+
+Incremental builds: Enable incremental builds in your Maven project. Maven supports incremental builds, which means that if you make 
+changes to a specific module or file, Maven will only rebuild the affected parts and their dependencies, instead of rebuilding the
+entire project. By properly structuring your Maven project and using modularization, you can take advantage of incremental builds to 
+save time during the build process.
+
+Optimize dependency management: Review your Maven dependencies and ensure that you have the necessary dependencies defined in your 
+pom.xml file. Avoid including unnecessary dependencies, as they can slow down the build process. Additionally, regularly update your 
+dependencies to their latest stable versions to take advantage of any performance improvements or bug fixes.
+
+By implementing these measures, you can significantly reduce the build time of your Maven project within the Docker container and 
+improve overall development productivity.
+=====================================================================================================================================
 Why we need multi branch pipeline?
+A multi-branch pipeline is a Jenkins pipeline that automatically creates and manages pipelines for multiple branches of a source 
+code repository. It provides several benefits, including:
+
+Automated pipeline creation: With a multi-branch pipeline, you don't need to manually create and configure a separate pipeline for 
+each branch of your source code repository. The pipeline is automatically created and maintained for each branch, allowing you to 
+easily manage and track changes in your codebase.
+
+Branch-specific pipeline configuration: Each branch in a multi-branch pipeline can have its own specific configuration, such as build 
+steps, tests, and deployment tasks. This allows you to define branch-specific behavior, ensuring that each branch is built and tested 
+appropriately.
+
+Isolation and parallel execution: By having separate pipelines for each branch, you can isolate the build and test processes, 
+preventing conflicts or interference between different branches. Additionally, multi-branch pipelines can run in parallel, 
+allowing you to speed up the overall build and test time by leveraging the available resources more effectively.
+
+Branch-based visibility and notifications: Multi-branch pipelines provide clear visibility into the status of each branch, including 
+build, test, and deployment results. This allows you to easily identify failing or unstable branches and take appropriate action. 
+Notifications can also be configured to inform developers and teams about the status of their branches, facilitating collaboration 
+and timely feedback.
+
+Branch-specific versioning and release management: Multi-branch pipelines enable versioning and release management at the branch 
+level. Each branch can have its own versioning scheme and release process, allowing for independent development and deployment of
+different branches. This is particularly useful in scenarios where you have long-lived feature branches or maintenance branches that 
+require separate versioning and release cycles.
+
+Overall, multi-branch pipelines simplify the management of pipelines for multiple branches in a source code repository. They improve 
+automation, visibility, and parallel execution, enabling efficient development, testing, and deployment processes for different 
+branches of your software projects.
+
+=====================================================================================================================================
 How to deploy bash code to cicd ?
+=====================================================================================================================================
 If you forget Jenkins password, how would you login back?
+
+a) Connect to the Jenkins server: Log in to the machine where Jenkins is installed, either directly or via SSH.
+
+b) Locate the Jenkins home directory: Navigate to the Jenkins home directory, which is typically located at /var/lib/jenkins 
+or /var/jenkins_home.
+
+c) Open the config.xml file: Use a text editor to open the config.xml file within the Jenkins home directory.
+
+d) Find the <useSecurity> element: Search for the <useSecurity> element in the config.xml file. It should be set to true if security 
+is enabled.
+
+e) Change the <useSecurity> element: Modify the <useSecurity> element to false. This will temporarily disable the security settings.
+
+f) Save the config.xml file: Save the changes you made to the config.xml file.
+
+g) Restart Jenkins: Restart the Jenkins service to apply the changes. The specific command to restart Jenkins may vary depending on 
+your operating system and how Jenkins is installed. For example, on Ubuntu, you can use the command: sudo service jenkins restart.
+
+h) Access Jenkins without authentication: After Jenkins restarts, you should be able to access the Jenkins web interface without
+authentication. You can go to the Jenkins URL in your web browser and access the Jenkins dashboard.
+
+i) Configure a new password: Once you have regained access to Jenkins, navigate to the "Manage Jenkins" section and select 
+"Configure Global Security". Enable security again by setting the <useSecurity> element in the config.xml file back to true. 
+You can then set a new password or configure other authentication methods.
+
+It's important to note that disabling security temporarily as described above is a potential security risk. Make sure to 
+re-enable security and set a new password as soon as you regain access to Jenkins to ensure the system is secure.
+=====================================================================================================================================
 How to handle the situation when you're port isn't  connecting in Jenkins?
+If you're experiencing issues with a port not connecting in Jenkins, there are several steps you can take to troubleshoot and 
+resolve the problem:
+
+a) Check port availability: Verify that the port you're trying to connect to is not already in use by another process. You can use
+the netstat command to check the port status. For example, netstat -tuln will display the list of listening ports on the system.
+
+b) Firewall configuration: Ensure that the firewall on the Jenkins server or the target machine allows incoming connections on the port 
+you're trying to access. You may need to modify the firewall rules or contact your network administrator to open the necessary port.
+
+c) Check network connectivity: Verify that there is network connectivity between the Jenkins server and the target machine. You can use 
+tools like ping or telnet to check the connectivity. For example, telnet <hostname> <port> can be used to test if the connection 
+can be established.
+
+d) Proxy configuration: If you're running Jenkins behind a proxy, ensure that the proxy settings are correctly configured in the Jenkins 
+configuration. Check the proxy settings in the Jenkins web interface under "Manage Jenkins" > 
+"Manage Plugins" > "Advanced" > "Proxy Configuration".
+
+e) Verify service availability: Make sure that the service you're trying to connect to is up and running on the target machine. 
+Check the status of the service and verify its configuration.
+
+f) Check Jenkins configuration: Review the Jenkins configuration to ensure that the correct port is configured for the specific 
+service or plugin you're trying to use. Double-check the port number and any other relevant settings.
+
+g) Restart Jenkins: If all else fails, you can try restarting the Jenkins service. This can help resolve any temporary issues or 
+configuration glitches that may be affecting the port connectivity.
+
+If you have access to the Jenkins server, you can also check the Jenkins logs for any error messages or relevant information that 
+may help diagnose the issue. The logs are usually located in the Jenkins home directory under the logs subdirectory.
+
+If you're still unable to resolve the port connectivity issue, it may be helpful to consult the Jenkins documentation, search online 
+forums or communities, or seek assistance from the Jenkins support channels or your system administrator.
+=====================================================================================================================================
 How the reviewer is notified on PR ?
+
+Email notifications: In addition to platform notifications, email notifications are commonly used to notify reviewers about new pull
+requests. The code hosting platform sends an email to the reviewer with information about the PR, including the title, description,
+and a link to the PR page. The reviewer can then click on the link to access the PR and review the changes.
+=====================================================================================================================================
 Jenkins pipeline stages like sonarqube how do you integrate and get the reports ?
+=====================================================================================================================================
 Instance and Jenkins connected, but Jenkins ui is not connecting and how do you troubleshoot, can you explain from first 🪜?
+To integrate SonarQube into a Jenkins pipeline and retrieve the analysis reports, you can follow these general steps:
+
+a) Install SonarQube Scanner: Install the SonarQube Scanner on the machine where Jenkins is running or on a separate machine accessible
+by Jenkins.
+
+b) Configure SonarQube Server: Set up and configure the SonarQube server instance. This includes creating a SonarQube project, generating 
+an access token, and configuring the quality profiles, rules, and other settings.
+
+c) Install SonarQube Scanner Plugin: Install the SonarQube Scanner Plugin in Jenkins. This plugin provides integration between Jenkins 
+and SonarQube, allowing you to trigger SonarQube analysis from Jenkins and retrieve the analysis reports.
+
+d) Configure SonarQube Scanner in Jenkins: Configure the SonarQube Scanner in the Jenkins global configuration. This involves specifying 
+the SonarQube server URL, access token, and other necessary parameters.
+
+e) Define SonarQube Stage in Jenkinsfile: Inside your Jenkinsfile, define a stage dedicated to running the SonarQube analysis. This stage
+should include the necessary steps to invoke the SonarQube Scanner and provide it with the required project and analysis parameters.
+For example:
+
+groovy
+Copy code
+stage('SonarQube Analysis') {
+  steps {
+    script {
+      withSonarQubeEnv('SonarQube Server') {
+        sh 'sonar-scanner'
+      }
+    }
+  }
+}
+
+f) Trigger Jenkins Pipeline: Run your Jenkins pipeline, which will include the SonarQube stage. Jenkins will execute the SonarQube 
+analysis by invoking the SonarQube Scanner with the specified parameters.
+
+g) Retrieve SonarQube Analysis Reports: After the SonarQube analysis is completed, you can retrieve the analysis reports and display 
+
+By integrating SonarQube into your Jenkins pipeline and retrieving the analysis reports, you can gain insights into code quality, 
+detect issues, and track the progress of code improvements over time.
+=====================================================================================================================================
 How to retrieve backup of a job?
 
-Have you worked on commit based job in jenkins? what settings you need to do in jenkins and github to setup commit based job?
-you want to create 50 freestyle jobs with same configurations, but only change is job name. how would you achieve the same? Ans : take the declarative pipeline and go to the managejenkins--> scriptconsole-->past the dscript and run it will create the new job in the pipeline and also we can do it by using the for loop
-How can you copy job from your local jenkins instance to other local jenkins instance?
+a) Access Jenkins Home Directory: Log in to the machine where Jenkins is installed and navigate to the Jenkins home directory. 
+The location of the Jenkins home directory depends on the installation method and operating system.
 
-How to Downgrade plugins in Jenkins? To manually downgrade the Jenkins Artifactory plugin: Shut down Jenkins. Delete the artifactory.jpi file and the artifactory folder from ${user_home}/.jenkins/plugins. Place the older artifactory.hpi file. Start Jenkins. Release Fast Or Die. Products. Artifactory.
-Have you worked on Jenkinsfile? Can we use different nodes for each stage?yes
-Can you list few ways by which we can trigger our build in Jenkins? (a) Trigger builds remotely : If you want to trigger your project built from anywhere anytime then you should select Trigger builds remotely option from the build triggers. You’ll need to provide an authorization token in the form of a string so that only those who know it would be able to remotely trigger this project’s builds. This provides the predefined URL to invoke this trigger remotely.
-(b) Build after other projects are built If your project depends on another project build then you should select Build after other projects are built option from the build triggers.
+b) Locate Job Configurations: Inside the Jenkins home directory, navigate to the jobs directory. This directory contains subdirectories
+for each job in Jenkins. Find the subdirectory corresponding to the job you want to retrieve the backup for.
+
+c) Copy Job Configuration Files: Inside the job's subdirectory, you will find various configuration files and directories. The main 
+configuration file is typically named config.xml or similar. Make a backup copy of this file by copying it to a different location.
+
+d) Restore Job Backup: To restore the backup of the job, you can simply copy the backup configuration file (config.xml) back to the 
+original job's subdirectory in the Jenkins jobs directory. Replace the existing config.xml file with the backup file.
+
+e) Restart Jenkins: After restoring the backup, restart Jenkins to apply the changes. This can usually be done by restarting the 
+Jenkins service or the Jenkins server.
+
+By following these steps, you can retrieve a backup of a job in Jenkins and restore it to recover or replicate the job's configuration.
+=====================================================================================================================================
+
+Have you worked on commit based job in jenkins? what settings you need to do in jenkins and github to setup commit based job?
+
+Configure GitHub Webhook:
+
+a) In your GitHub repository, go to "Settings" → "Webhooks".
+
+b) Add a new webhook and provide the Jenkins URL followed by /github-webhook/ as the Payload URL (e.g., http://jenkins.example.com/github-webhook/).
+
+c) Select the events that should trigger the webhook. Typically, you would choose "Just the push event" or "Send me everything".
+=====================================================================================================================================
+you want to create 50 freestyle jobs with same configurations, but only change is job name. how would you achieve the same? 
+Ans : take the declarative pipeline and go to the managejenkins--> scriptconsole-->past the dscript and run it will create the 
+new job in the pipeline and also we can do it by using the for loop
+=====================================================================================================================================
+How can you copy job from your local jenkins instance to other local jenkins instance?
+=====================================================================================================================================
+
+How to Downgrade plugins in Jenkins? To manually downgrade the Jenkins Artifactory plugin: Shut down Jenkins. Delete the 
+artifactory.jpi file and the artifactory folder from ${user_home}/.jenkins/plugins. Place the older artifactory.hpi file. 
+Start Jenkins. Release Fast Or Die. Products. Artifactory.
+=====================================================================================================================================
+Have you worked on Jenkinsfile? Can we use different nodes for each stage?
+yes
+=====================================================================================================================================
+Can you list few ways by which we can trigger our build in Jenkins? 
+
+(a) Trigger builds remotely : If you want to trigger your project built from anywhere anytime then you should select Trigger builds
+remotely option from the build triggers. You’ll need to provide an authorization token in the form of a string so that only those who 
+know it would be able to remotely trigger this project’s builds. This provides the predefined URL to invoke this trigger remotely.
+
+(b) Build after other projects are built If your project depends on another project build then you should select Build after other
+projects are built option from the build triggers.
 
 In this, you must specify the project(Job) names in the Projects to watch field section and select one of the following options:
 
@@ -31,40 +327,64 @@ Trigger even if the build is unstable Note: A build is unstable if it was built 
 
 Trigger even if the build fails
 
-(C)Build periodically: If you want to schedule your project build periodically then you should select the Build periodically option from the build triggers. You must specify the periodical duration of the project build in the scheduler field section
+(C)Build periodically: If you want to schedule your project build periodically then you should select the Build periodically option 
+from the build triggers. You must specify the periodical duration of the project build in the scheduler field section
 
-(D)GitHub webhook trigger for GITScm polling: A webhook is an HTTP callback, an HTTP POST that occurs when something happens through a simple event-notification via HTTP POST.
+(D)GitHub webhook trigger for GITScm polling: A webhook is an HTTP callback, an HTTP POST that occurs when something happens through 
+a simple event-notification via HTTP POST.
 
 GitHub webhooks in Jenkins are used to trigger the build whenever a developer commits something to the branch. note:et’s see how to add build a webhook in GitHub and then add this webhook in Jenkins.
 
 Go to your project repository. Go to “settings” in the right corner. Click on “webhooks.” Click “Add webhooks.” Write the Payload URL as
 
  (E) Poll SCM:
-Poll SCM periodically polls the SCM to check whether changes were made (i.e. new commits) and builds the project if new commits were pushed since the last build.
+Poll SCM periodically polls the SCM to check whether changes were made (i.e. new commits) and builds the project if new commits were 
+pushed since the last build.
 
-You must schedule the polling duration in the scheduler field. Like we explained above in the Build periodically section. You can see the Build periodically section to know how to schedule. 19. What is the difference between Build Periodically and Poll SCM?
+You must schedule the polling duration in the scheduler field. Like we explained above in the Build periodically section. You can see 
+the Build periodically section to know how to schedule. 
+
+19. What is the difference between Build Periodically and Poll SCM?
 
 How to set Jenkins build to fail based specific word in console output ?
+=====================================================================================================================================
 What are active and reactive parameters (Dynamic parameterization) in Jenkins ?
+=====================================================================================================================================
 How to customize the build number display to something else in Jenkins job page?
+=====================================================================================================================================
 What are multi branch pipeline?
+=====================================================================================================================================
 What is shared library in Jenkins ?
+=====================================================================================================================================
 
 what is the need of CICD tools?
+=====================================================================================================================================
 What type of Jenkinsfile you have worked on?
+=====================================================================================================================================
 In master slave setup if I want run job on specific node is is possible?
+=====================================================================================================================================
 what is the importance of Jenkins secrets?
+=====================================================================================================================================
 
 What are types jobs you have worked on??
+=====================================================================================================================================
 Can we have job for pr and once merge is done the source branch should be deleted?
+=====================================================================================================================================
 How do you take Jenkins backup?
+=====================================================================================================================================
 Can you tell me importance of post block??
+=====================================================================================================================================
 
 list of best practices to follow while writing Jenkins pipeline?
+=====================================================================================================================================
 Is it possible to run each stage on different agaent?
+=====================================================================================================================================
 Is it possible to change success or error message that we see in console ouput ?
+=====================================================================================================================================
 Have list of command that has to executed in certain directory in the code, is it possible to do the same?
+=====================================================================================================================================
 Can we have versioning on Jenkins freestyle job?
+=====================================================================================================================================
 how to secure jenkins?
 o secure Jenkins, you can follow these best practices:
 
