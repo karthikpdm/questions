@@ -1,5 +1,33 @@
 How to save only last 5 builds of jenkins job?
 As:using build discarder
+
+how to configure a nodes in jenkins?
+To configure nodes (also known as agents or slaves) in Jenkins, you can follow these steps:
+
+a) Log in to your Jenkins instance as an administrator.
+
+b)Navigate to the Jenkins home page and click on "Manage Jenkins" on the left-hand side.
+
+c)On the Manage Jenkins page, click on "Manage Nodes and Clouds" to access the node configuration settings.
+
+d) On the Nodes page, click on the "New Node" or "New Agent" button to add a new node.
+
+e)Provide a name for the node and select the type of node you want to configure. You can choose between a "Permanent Agent" 
+(dedicated machine) or a "Cloud" (dynamic provisioning of agents).
+
+f)Fill in the necessary details such as the number of executors (concurrent builds), remote root directory, labels 
+
+g)If you selected the "Permanent Agent" type, ensure that the machine where the node is running has the Jenkins agent software 
+installed and configured to connect to your Jenkins instance. The agent should be online and reachable.
+
+h)If you selected the "Cloud" type, configure the cloud-specific settings such as the provisioning method, template, credentials, 
+and other required details.
+
+i)Once the node is configured and connected to Jenkins, you can use it in your job configurations by specifying the appropriate label(s) 
+to determine which node(s) should execute the job.
+
+j)By configuring nodes in Jenkins, you can distribute your builds and workload across multiple machines, enabling parallel execution,
+improved scalability, and better resource utilization.
 =====================================================================================================================================
 jenkins shared library?
 A shared library in Jenkins is a powerful feature that allows you to define reusable code and functions that can be shared across
