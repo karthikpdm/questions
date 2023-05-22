@@ -344,11 +344,31 @@ pushed since the last build.
 You must schedule the polling duration in the scheduler field. Like we explained above in the Build periodically section. You can see 
 the Build periodically section to know how to schedule. 
 
+=====================================================================================================================================
+
 19. What is the difference between Build Periodically and Poll SCM?
 
+=====================================================================================================================================
+
 How to set Jenkins build to fail based specific word in console output ?
+using the post section
 =====================================================================================================================================
 What are active and reactive parameters (Dynamic parameterization) in Jenkins ?
+
+a) Active Parameters: Active parameters are user-provided inputs that are defined and specified by the user before the job starts. 
+These parameters are static and do not change during the job execution. They are typically set in the job configuration and remain 
+constant throughout the build.
+
+b) Reactive Parameters: Reactive parameters are dynamic inputs that can change during the job execution based on the environment or 
+other factors. These parameters are defined as groovy scripts or shell commands that are evaluated during the build. The value of 
+reactive parameters can be determined at runtime based on the output of the script or command.
+
+Both active and reactive parameters provide a way to parameterize Jenkins jobs and make them more flexible and customizable. 
+Active parameters are suitable for inputs that are known and set before the job starts, while reactive parameters are useful when 
+inputs need to be determined dynamically during the job execution.
+
+By using active and reactive parameters, Jenkins jobs can prompt users for inputs or fetch values from external systems, making 
+the job more versatile and adaptable to different scenarios.
 =====================================================================================================================================
 How to customize the build number display to something else in Jenkins job page?
 =====================================================================================================================================
