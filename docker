@@ -37,7 +37,8 @@ maintainable. Document any assumptions, dependencies, and customizations.
 l) Test Your Image:  Regularly build and test your Docker image to ensure it behaves as expected and meets the requirements of your 
 application. Use automated testing tools and CI/CD pipelines to streamline the process.
 
-By following these best practices, you can create efficient, maintainable, and secure Docker images for your application
+========================================================================================================================================
+
 
 Difference between docker stop and docker kill?
 The main difference between docker stop and docker kill commands lies in how they handle the termination of a running container:
@@ -56,61 +57,188 @@ to stop, while docker kill forcefully terminates the container without giving it
 between the two commands depends on the desired behavior for stopping the container, considering factors such as application state and 
 the need for graceful termination.
 
+========================================================================================================================================
+
 
 Command to list conatiners which state is exited? 
 Ans : docker ps -a f status=running = exited
 
+========================================================================================================================================
+
 command to clean-up docker host ( deleting stopped conatiners, dangling images and unused networks)? 
 Ans : docker system prune
+
+========================================================================================================================================
 
 
 What version of docker you have used? Specific reason to use that particular version? 
 Ans:
-
+========================================================================================================================================
 Can we have multiple CMD in Dockerfile?
 yes but it considers the last cmd only
-
+========================================================================================================================================
 Have you worked on docker swarm and docker compose?
-
+========================================================================================================================================
 About alpine why it used and how to use it?
-
+Alpine is a lightweight Linux distribution that is commonly used as a base image for Docker containers. It is known for its small
+size, simplicity, and security.
+========================================================================================================================================
 Have you worked on multi-stage dockerfile and why we need that?
 
+yes By leveraging multi-stage builds, you can achieve smaller, more efficient Docker images while still providing a clean and 
+manageable build process.
+========================================================================================================================================
 Lets say i have container which is attached with a volume, if container crashes what happens to volume?
+When a container crashes or is stopped, the attached volume remains intact and persists. The volume is decoupled from the container's 
+lifecycle, which means that even if the container is no longer running or has crashed, the data stored in the volume is preserved.
 
+Volumes in Docker are designed to provide persistent storage that can be shared across containers or used independently. They are 
+separate entities from containers and exist independently of the container's lifecycle.
+
+When you create a volume and attach it to a container, the data stored in that volume is stored on the host machine's filesystem, not 
+within the container itself. Therefore, even if the container crashes or is removed, the data within the volume remains unaffected.
+
+You can start a new container and attach the same volume to it, allowing you to access and retrieve the data stored in the volume. 
+This makes volumes a reliable way to store and persist data in Docker containers, even in cases where the containers may crash or be 
+replaced.
+
+It's important to note that volumes can be managed separately from containers. You can create, remove, and manage volumes 
+independently of containers, giving you more control over your data storage and management in Docker.
+========================================================================================================================================
 can you copy a file form local to run container?
+yes
+docker cp /path/to/local/file.txt <container_name>:/path/in/container/file.txt
+========================================================================================================================================
+Lets say I have 1 GB file that has to be sent to docker daemon, as its 1GB it will take muchtime and network too.?
+To efficiently send a large file to the Docker daemon during the build process, you can leverage the ADD instruction in your Dockerfile 
+along with the --chown option. The ADD instruction is used to copy files or directories from the build context or local machine to the 
+Docker image.
+ADD --chown=user:group large_file.tar.gz /path/in/container/
+In the above example, replace large_file.tar.gz with the name of your 1 GB file, user:group with the desired user and group ownership 
+for the file, and /path/in/container/ with the destination path inside the container where you want to copy the file.
 
-Lets say I have 1 GB file that has to be sent to docker daemon, as its 1GB it will take muchtime and network too. By which option while building dockerfile we can send the fileIn better manner?
+By using the ADD instruction with the --chown option, the file will be efficiently transferred to the Docker daemon during the build 
+process, preserving the ownership and permissions in the resulting image.
+
+By using the --chown option, you can specify the user and group ownership of the copied file in the image. This helps in preserving 
+the correct permissions and ownership for the file.
+
+========================================================================================================================================
+By which option while building dockerfile we can send the file In better manner?
+To efficiently send a file to the Docker daemon during the build process, you can leverage the COPY instruction instead of the ADD 
+instruction in your Dockerfile. The COPY instruction is used to copy files or directories from the build context or local machine to 
+the Docker image.
+
+The COPY instruction is preferred over ADD when you simply need to copy files into the image without any complex features such as 
+extracting archives or fetching remote resources. It is more explicit and straightforward for copying files.
+========================================================================================================================================
 What is the difference between ADD and COPY docker instructions in Dockerfile?
-Command to remove to stopped and running Containers? docker rm $(ps-aq)
-Inside the container I did many changes like Creating, modifying and deleting file but I Wanted to check which files has been changed And what action has been taken what is the Command we need to use ?
+In Dockerfile, there are two instructions available for copying files and directories: ADD and COPY. Although they have similar 
+functionality, there are some differences between them:
+
+COPY: The COPY instruction is used to copy files or directories from the build context or local machine to the Docker image. It has a 
+straightforward and explicit behavior. It copies files or directories as-is from the source to the destination in the image. 
+Here are some key points about COPY:
+
+Syntax: COPY <source> <destination>
+It copies the files or directories from the build context or local machine to the specified destination path in the image.
+It supports copying multiple files and directories at once.
+It does not perform any extraction of archives or retrieval of remote resources.
+It is recommended to use COPY when you only need to copy files without any extra processing.
+
+ADD: The ADD instruction also copies files and directories, but it has some additional features compared to COPY. In addition to 
+copying files, ADD can also extract archives (e.g., tar, gzip) and retrieve remote resources (e.g., URLs). Here are some key points 
+about ADD:
+
+Syntax: ADD <source> <destination>
+It copies files or directories from the build context or local machine to the specified destination path in the image.
+It can automatically extract archives (e.g., tar, gzip) and place the extracted content in the destination directory.
+It can retrieve remote resources (e.g., URLs) and place them in the destination directory.
+Due to its additional functionality, ADD has some side effects and complexities. Therefore, it is recommended to use COPY instead of 
+ADD unless you specifically need the extra features.
+========================================================================================================================================
+Command to remove to stopped and running Containers? 
+To remove stopped and running containers in Docker, you can use the docker rm command with the appropriate options
+
+docker rm $(ps-aq)
+docker rm -f $(docker ps -a -q)
+========================================================================================================================================
+To remove all containers, including the running ones:
+
+Inside the container I did many changes like Creating, modifying and deleting file but I Wanted to check which files has been changed 
+And what action has been taken what is the Command we need to use ?
+
+To check which files have been changed inside a container, you can use the docker diff command. This command compares the file changes 
+between the container's current state and its base image.
+
+a)Find the container ID or name using the docker ps command:
+docker ps
+
+b)Run the docker diff command followed by the container ID or name:
+docker diff <container_id_or_name>
 
 What does ONBUILD instruction do in Dockerfile?
 
 What is the use of .dockerignore file?
+The .dockerignore file is used to specify which files and directories should be excluded from the Docker build context when 
+building a Docker image. It allows you to specify patterns for files and directories that you want to ignore, similar to how
+.gitignore works in Git.
+
 I have dockerfile that accepts arguments, if I supply value as “1” then it should use maven 2.x version for base image and if I 
 supply “2” then it should take maven latest as base image
 
-What are docker compose and docker swarm?
-
+========================================================================================================================================
 How to configure docker private registry?
 
-Types of network in docker? if you dont specify network to deploy on which network the conatiner will be created?
+========================================================================================================================================
 Explain a sample dockerfile that you have used in your project?
+========================================================================================================================================
 Can we launch linux conatiners windows and viceversa?
-Why we need docker compose and docker swarm
+Yes, it is possible to run Linux containers on Windows and Windows containers on Linux, but it requires specific
+configurations and tools.
+========================================================================================================================================
 What's the difference between docker volume and docker mounting
-What is the importance of .dockerigonre file, can name docker file with any other name?
+
+In Docker, both volumes and bind mounts are used to provide persistent storage and data sharing between containers and the host machine. However, there are some differences between the two:
+
+Docker Volumes:
+
+Docker volumes are managed by Docker and are independent of the container's lifecycle.
+Volumes are created and managed using Docker commands and can be shared between multiple containers.
+Volumes are stored in a specific location on the host machine and are typically isolated from the container's file system.
+Docker volumes can be easily backed up, restored, and managed independently of containers.
+Bind Mounts:
+
+Bind mounts are a direct mapping of a directory or file on the host machine into a container.
+Bind mounts are specified during container runtime and are tied to the container's lifecycle.
+Changes made to files or directories in the bind mount are immediately reflected both inside the container and on the host machine.
+Bind mounts provide more flexibility and control over the data, as the data is directly accessible and editable on the host machine.
+========================================================================================================================================
 I need to delete all stopped containers and unused images command for that?
+docker container prune
+========================================================================================================================================
 How do you monitor docker in production
-Is it good to use docker compose in production
+========================================================================================================================================
 How to copy files from host machine to container?
 docker cp filepath <container id>
+========================================================================================================================================
 By default how many containeres are created ?
 A) only one container
+========================================================================================================================================
 ==> Which is the lightest image in docker ?
  A) Alpine
+================================================================================================================================================================================================================================================================================ 
 ==> How do you list allstopped containers only ?
 A) docker ps -f "status=exited"
-1.what was yourrepository were you have pushed your dockerhub images ?
+========================================================================================================================================
+Command to list conatiners which state is exited? 
+Ans : docker ps -a f status=running = exited
+
+========================================================================================================================================
+
+command to clean-up docker host ( deleting stopped conatiners, dangling images and unused networks)? 
+Ans : docker system prune
+========================================================================================================================================
+1.what was your repository were you have pushed your dockerhub images ?
 A) mention dockerhub and Amazon Elastic Container Registry (ECR)
+========================================================================================================================================
