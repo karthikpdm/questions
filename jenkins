@@ -678,4 +678,8 @@ This helps protect sensitive information, such as login credentials, during tran
 k)Continuous Monitoring: Implement continuous monitoring solutions to detect and alert on any security issues or anomalies within 
 your Jenkins environment.
 
-Remember that security is an ongoing process, and it's essential to stay updated on the latest security best practices and vulnerabilities. Regularly review and update your security measures to ensure the integrity and confidentiality of your Jenkins instance.
+Remember that security is an ongoing process, and it's essential to stay updated on the latest security best practices and 
+vulnerabilities. Regularly review and update your security measures to ensure the integrity and confidentiality of your Jenkins 
+instance.
+
+how will you install sonarqube and integrate test cases 
