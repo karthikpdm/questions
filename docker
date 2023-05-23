@@ -1,39 +1,40 @@
 Any 3 best practices of docker?
-Use Official Base Images: Start your Dockerfile with an official base image from the Docker Hub repository. Official images are
+
+a) Use Official Base Images:   Start your Dockerfile with an official base image from the Docker Hub repository. Official images are
 typically well-maintained and regularly updated.
 
-Use Specific Version Tags: Specify a specific version tag for the base image to ensure consistency and avoid unexpected changes. 
+b) Use Specific Version Tags:  Specify a specific version tag for the base image to ensure consistency and avoid unexpected changes. 
 Avoid using the "latest" tag, as it may not be the most stable or suitable version for your application.
 
-Minimize Layers: Use multi-stage builds and combine commands to minimize the number of layers in your image. Each layer adds overhead 
+c) Minimize Layers:  Use multi-stage builds and combine commands to minimize the number of layers in your image. Each layer adds overhead 
 and increases the size of the image.
 
-Use .dockerignore: Create a .dockerignore file to exclude unnecessary files and directories from being copied into the image. 
+d) Use .dockerignore:  Create a .dockerignore file to exclude unnecessary files and directories from being copied into the image. 
 This helps reduce the build context and improves build speed.
 
-Order Commands Efficiently: Arrange commands in your Dockerfile to take advantage of caching. Place commands that change less 
+e) Order Commands Efficiently:  Arrange commands in your Dockerfile to take advantage of caching. Place commands that change less 
 frequently, such as installing dependencies, at the top of the file, and commands that change frequently, such as copying source code, 
 at the bottom.
 
-Use COPY Instead of ADD: Prefer the COPY instruction over ADD unless you specifically need the additional features of ADD, such as 
+f) Use COPY Instead of ADD:   Prefer the COPY instruction over ADD unless you specifically need the additional features of ADD, such as 
 extracting compressed files or downloading files from URLs. COPY is simpler and more transparent.
 
-Minimize Image Size: Remove unnecessary dependencies, temporary files, and cleanup after each step to minimize the final image size. 
+g) Minimize Image Size:  Remove unnecessary dependencies, temporary files, and cleanup after each step to minimize the final image size. 
 Use the --no-install-recommends flag when installing packages to exclude unnecessary dependencies.
 
-Use Environment Variables: Set necessary environment variables in the Dockerfile or at runtime using the -e option when running the 
+h) Use Environment Variables:  Set necessary environment variables in the Dockerfile or at runtime using the -e option when running the 
 container. This allows for easy configuration and makes the image more portable.
 
-Define Entry Point: Use the ENTRYPOINT instruction to specify the default command to run when the container starts. Combine it with 
+i) Define Entry Point:  Use the ENTRYPOINT instruction to specify the default command to run when the container starts. Combine it with 
 CMD for flexibility, allowing users to override the default command if needed.
 
-Keep Security in Mind: Regularly update your base images to incorporate security patches. Avoid running containers as the root user 
+j) Keep Security in Mind:  Regularly update your base images to incorporate security patches. Avoid running containers as the root user 
 whenever possible, and properly configure user permissions within the container.
 
-Document Your Dockerfile: Add comments and provide clear instructions within the Dockerfile to make it more understandable and
+k) Document Your Dockerfile:  Add comments and provide clear instructions within the Dockerfile to make it more understandable and
 maintainable. Document any assumptions, dependencies, and customizations.
 
-Test Your Image: Regularly build and test your Docker image to ensure it behaves as expected and meets the requirements of your 
+l) Test Your Image:  Regularly build and test your Docker image to ensure it behaves as expected and meets the requirements of your 
 application. Use automated testing tools and CI/CD pipelines to streamline the process.
 
 By following these best practices, you can create efficient, maintainable, and secure Docker images for your application
@@ -41,9 +42,14 @@ By following these best practices, you can create efficient, maintainable, and s
 Difference between docker stop and docker kill?
 The main difference between docker stop and docker kill commands lies in how they handle the termination of a running container:
 
-docker stop: This command sends a SIGTERM signal to the main process running inside the container, allowing it to gracefully stop and clean up. The container is given a grace period (default is 10 seconds) to shut down gracefully. During this time, the container can perform any necessary cleanup tasks, such as saving state or closing connections. If the container does not stop within the grace period, a SIGKILL signal is sent, forcibly terminating the container.
+docker stop: This command sends a SIGTERM signal to the main process running inside the container, allowing it to gracefully stop and
+clean up. The container is given a grace period (default is 10 seconds) to shut down gracefully. During this time, the container can 
+perform any necessary cleanup tasks, such as saving state or closing connections. If the container does not stop within the grace 
+period, a SIGKILL signal is sent, forcibly terminating the container.
 
-docker kill: This command sends a SIGKILL signal to the main process running inside the container, immediately terminating it without any grace period. The container is abruptly stopped, and any running processes inside the container are terminated immediately, without any chance to perform cleanup tasks.
+docker kill: This command sends a SIGKILL signal to the main process running inside the container, immediately terminating it 
+without any grace period. The container is abruptly stopped, and any running processes inside the container are terminated 
+immediately, without any chance to perform cleanup tasks.
 
 In summary, docker stop allows the container to gracefully shut down by sending a termination signal and waiting for the container
 to stop, while docker kill forcefully terminates the container without giving it a chance to perform any cleanup tasks. The choice 
@@ -58,8 +64,11 @@ command to clean-up docker host ( deleting stopped conatiners, dangling images a
 Ans : docker system prune
 
 
-What version of docker you have used? Specific reason to use that particular version? Ans:
+What version of docker you have used? Specific reason to use that particular version? 
+Ans:
+
 Can we have multiple CMD in Dockerfile?
+yes but it considers the last cmd only
 
 Have you worked on docker swarm and docker compose?
 
