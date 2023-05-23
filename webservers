@@ -21,3 +21,5 @@ sudo tail -f /opt/tomcat/logs/catalina.out
 
 How developers will check the application logs?
 My website is not working and there is no Dev team available and how u ll manage to keep the web page alive ?
+
+What is terraform taint and Explain.?
