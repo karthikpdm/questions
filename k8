@@ -13,6 +13,7 @@ You have pvc for a pod, unfortunately pod get scrashed, and client insisting you
 7. Your pod is working fine, all of a sudden it shows crashloopback of error, what may be causing that uissue and what is your
 approach to resolve it?
 is vpc required or not for creating eks cluster?
+how will u check if there is any probe failure and how will you resolve.
 9. how will you create and access eks cluster?
 What is the time delay in blue green ?
 10. what is the authenticate method to access the image from jfrog to kubernetes environment?
