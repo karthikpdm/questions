@@ -1,0 +1,25 @@
+How you manage credentials in jenkins.
+ChatGPT
+In Jenkins, credentials can be managed using the built-in Credentials plugin. This plugin allows you to securely store and manage 
+various types of credentials that are used by Jenkins jobs, such as usernames/passwords, 
+SSH private keys, API tokens, and more.
+
+Here are the steps to manage credentials in Jenkins:
+
+Install and configure the Credentials plugin: If the Credentials plugin is not already installed, you can install it from the Jenkins 
+Plugin Manager. Once installed, you may need to configure additional settings, such as encryption options.
+
+Create credentials: In the Jenkins web interface, go to "Manage Jenkins" and then click on "Manage Credentials". From there, you can 
+create different types of credentials based on your requirements. Provide the necessary information for each credential type, such as 
+the username, password, or private key.
+
+Use credentials in Jenkins jobs: Once you have created the credentials, you can use them in your Jenkins jobs. For example, when 
+configuring a job that requires authentication to access a Git repository, you can select the appropriate credentials from the 
+available options.
+
+Secure credential storage: It's important to ensure that credentials are stored securely in Jenkins. Avoid exposing sensitive 
+credentials in job configurations or logs. Jenkins provides the option to reference credentials by their ID instead of directly 
+exposing the sensitive information.
+
+Additionally, you can manage credentials programmatically using the Jenkins API and various Jenkins plugins that integrate with 
+external credential stores or secret management systems, such as HashiCorp Vault or AWS Secrets Manager.
