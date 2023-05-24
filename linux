@@ -309,3 +309,49 @@ detailed instructions. Additionally, exercise caution when modifying services on
 stability of the 
 system.
 
+======================================================================================================================================
+command to check the partitions in linux
+
+To check the partitions in Linux, you can use the fdisk or lsblk command. Here's how you can use these commands:
+
+Using fdisk:
+
+
+sudo fdisk -l
+This command will display the partition information for all the disks on your system.
+
+Using lsblk:
+
+lsblk
+This command provides a tree-like view of the block devices and their corresponding partitions.
+
+Both commands will show the list of partitions along with information such as partition names, sizes, file system types, and mount
+points.
+
+Note: Running these commands typically requires administrative privileges, so you may need to use sudo or run them as the root user.
+
+======================================================================================================================================
+
+Whats  the command to check the IP address if u have the access to cli 
+
+To check the IP address of a Linux system from the command line, you can use the ip or ifconfig command. Here's how you can use these commands:
+
+Using ip command:
+
+sql
+ip addr show
+This command will display the network interfaces and their associated IP addresses.
+
+Using ifconfig command:
+
+ifconfig
+This command will display the network interfaces along with their IP addresses, netmasks, and other information.
+
+Both commands provide similar information, including the IP address assigned to each network interface. However, the ip command is 
+the newer and recommended command for network-related tasks.
+
+Note: Running these commands may require administrative privileges, so you may need to use sudo or run them as the root user.
+
+=====================================================================================================================================
+
+
