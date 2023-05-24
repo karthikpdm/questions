@@ -15,6 +15,63 @@ approach to resolve it?
 is vpc required or not for creating eks cluster?
 how will u check if there is any probe failure and how will you resolve.
 9. how will you create and access eks cluster?
+
+======================================================================================================================================
+Explain ingress controller and how you specify the routes
+ChatGPT
+In Kubernetes, an Ingress controller is a component that acts as an entry point for incoming traffic into the cluster. It routes external requests to the appropriate services based on the requested hostname or path. It serves as an API gateway for managing inbound traffic to the services running within the cluster.
+
+The Ingress controller works in conjunction with Ingress resources, which are Kubernetes objects that define the rules and configurations for routing traffic. The Ingress resource specifies the desired routing rules, such as which hostnames or paths should be directed to which services.
+
+To specify routes using an Ingress controller, you typically follow these steps:
+
+Choose an Ingress controller implementation: There are various Ingress controller implementations available, such as Nginx Ingress Controller, Traefik, HAProxy Ingress, and others. Select the one that suits your requirements and install it in your Kubernetes cluster.
+
+Define Ingress rules: Create Ingress resources that define the desired routing rules. In the Ingress resource, you specify the hostnames, paths, and the associated backend services that should handle the traffic.
+
+Deploy and expose services: Ensure that the services you want to expose are deployed in your cluster and have a stable network endpoint. This can be achieved through services of type ClusterIP or NodePort.
+
+Apply the Ingress resource: Apply the Ingress resource to your cluster using the kubectl apply command. This creates the necessary configurations for the Ingress controller to route traffic to the specified services based on the defined rules.
+
+Configure DNS or Load Balancer: Configure DNS records or a load balancer (depending on your setup) to direct incoming traffic to the IP address associated with the Ingress controller.
+
+The Ingress controller watches for changes in the Ingress resources and automatically updates the routing configurations accordingly. It acts as a reverse proxy and handles traffic based on the defined rules, forwarding requests to the appropriate services within the cluster.
+
+By leveraging an Ingress controller and Ingress resources, you can efficiently manage the routing of incoming traffic to multiple 
+services in your Kubernetes cluster, enabling external access to your applications with granular control over hostname-based or 
+path-based routing.
+
+======================================================================================================================================
+
+What if the POD is not runnng fine. What is the reason it went to CrashLoopBack?
+
+When a Pod goes into a CrashLoopBackOff state, it means that the container running within the Pod is repeatedly crashing immediately after starting. This can be caused by various reasons, including:
+
+Application errors: The container may be encountering errors within the application code or dependencies, causing it to crash. Check the container logs for any error messages or stack traces that indicate the specific issue.
+
+Resource constraints: The container might not have enough resources (CPU, memory, disk) allocated to run properly. Insufficient resources can lead to crashes. Ensure that the resource requests and limits for the container are properly configured based on the application's requirements.
+
+Startup dependencies: The container might depend on external services or resources that are not yet available or misconfigured during startup. Make sure that any required services or dependencies are properly configured and accessible.
+
+Configuration issues: Incorrect configuration settings, such as invalid environment variables, incorrect file paths, or misconfigured networking, can cause the container to crash. Review the container's configuration to ensure it is set up correctly.
+
+Image issues: The container image itself may have issues or be incompatible with the underlying environment. Ensure that the container image is built correctly and matches the runtime environment's requirements.
+
+To troubleshoot the CrashLoopBackOff issue, you can take the following steps:
+
+Check container logs: Retrieve the logs for the crashing container to get detailed information about the error or crash reason. Use the kubectl logs command with the appropriate Pod and container name to view the logs.
+
+Describe the Pod: Use the kubectl describe pod command to get more information about the Pod's status and events. Look for any error messages or events that indicate the cause of the crash.
+
+Verify resource allocation: Ensure that the Pod's resource requests and limits are properly set and match the container's requirements. Adjust the resource allocation if necessary.
+
+Test the container image: Try running the container image locally or in a separate environment to verify that it works as expected. If the issue persists, consider rebuilding the container image or using a different version.
+
+Validate application configuration: Double-check the application's configuration settings, environment variables, and any external dependencies to ensure they are correctly set up.
+
+Review recent changes: If any recent changes were made to the application or environment, consider rolling back those changes or investigating if they might be causing the crash.
+
+By troubleshooting and addressing the underlying cause of the CrashLoopBackOff state, you can resolve the issue and ensure that the Pod runs properly.
 What is the time delay in blue green ?
 10. what is the authenticate method to access the image from jfrog to kubernetes environment?
 11. what is lense?
@@ -76,4 +133,35 @@ Cluster-wide network policy: You can create a network policy at the cluster leve
 
 Service-based communication: If you want to expose a pod in one namespace to another namespace, you can create a Kubernetes Service of type ClusterIP or NodePort in the source namespace and then access it from the target namespace. Services provide a stable endpoint for accessing pods, regardless of the namespace they are in.
 
-Ingress: If you have an Ingress controller set up in your cluster, you can configure rules to route traffic from one namespace to another. Ingress allows you to define rules for external access to services, and you can specify different namespaces as the target for incoming requests.
+Ingress: If you have an Ingress controller set up in your cluster, you can configure rules to route traffic from one namespace to 
+another. Ingress allows you to define rules for external access to services, and you can specify different namespaces as the target
+for incoming requests.
+
+======================================================================================================================================
+What is kubectl? What's the purpose of using it? 
+
+kubectl is a command-line tool used for interacting with Kubernetes clusters. It is part of the Kubernetes control plane and provides 
+a convenient way to manage and operate Kubernetes resources.
+
+The purpose of kubectl is to enable users to perform various operations on Kubernetes clusters, including:
+
+Deploying and managing applications: kubectl allows you to create, update, and delete Kubernetes resources such as pods, deployments, 
+services, and ingress.
+
+Inspecting cluster state: With kubectl, you can retrieve information about the current state of your cluster, including nodes, pods, 
+services, and other resources. You can view resource details, check their status, and troubleshoot any issues.
+
+Scaling and autoscaling: kubectl enables you to scale your deployments up or down based on demand. You can also configure autoscaling 
+for your applications to automatically adjust resources based on metrics such as CPU and memory usage.
+
+Logging and debugging: kubectl provides commands to view logs generated by pods and containers running within your cluster. You can 
+debug issues, troubleshoot errors, and analyze application behavior.
+
+Managing cluster components: With kubectl, you can manage various components of your Kubernetes cluster, such as nodes, namespaces, 
+RBAC (Role-Based Access Control), secrets, and configmaps.
+
+Interacting with the cluster API: kubectl allows you to interact directly with the Kubernetes API server. This gives you flexibility 
+in performing advanced operations and managing resources beyond what is available through the command-line interface.
+
+Overall, kubectl is a powerful tool that simplifies the management and operation of Kubernetes clusters. It provides a unified 
+interface to interact with the cluster, deploy applications, monitor resources, and perform various administrative tasks.
