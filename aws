@@ -1,5 +1,12 @@
 What are roles and policies in AWS IAM?
 Vpc endpoint in AWS?
+
+How many buckets can be created in s3
+ChatGPT
+In Amazon S3, the maximum number of buckets that can be created per AWS account is 1000. This limit is a soft limit and can be 
+increased by requesting a service limit increase from AWS Support. It's important to note that this limit applies to the total number 
+of buckets across all AWS regions within an AWS account.
+
 What is OSI model ? Tell the layers ?
 how will remove the non-running services in the VM
 
