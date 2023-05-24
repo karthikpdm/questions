@@ -1,24 +1,44 @@
-Can we have multiple conatiners in a pod? Can we have similar conatiners in a pod?ans : no
-
+Can we have multiple conatiners in a pod? Can we have similar conatiners in a pod?
+ans : no
+=======================================================================================================================================
 Lets say i have 4 conatiners, one of them has failed how would you check which container has failed? kubecl describe pods
 
-What is liveness and readiness probe? Why we need them? image
+=======================================================================================================================================
+What is liveness and readiness probe? Why we need them?
+=======================================================================================================================================
 How to manages eks ?
+=======================================================================================================================================
 
 Have you worked on kubernetes monitoring? Which tools you have used?
-You have pvc for a pod, unfortunately pod get scrashed, and client insisting you to get the sam pod without creating new one, how will you resolve?
+=======================================================================================================================================
+You have pvc for a pod, unfortunately pod get scrashed, and client insisting you to get the sam pod without creating new one, how 
+will you resolve?
+
+=======================================================================================================================================
 4. How CNI works?
+
+=======================================================================================================================================
 5. One specific thing you required, if you are accessing EKS cluster, what is that?
+
+=======================================================================================================================================
 6. your DB pod is having some issue and could not able to view complete application in application pod, how you resolve the issue?
+
+=======================================================================================================================================
 7. Your pod is working fine, all of a sudden it shows crashloopback of error, what may be causing that uissue and what is your
 approach to resolve it?
+
+=======================================================================================================================================
 is vpc required or not for creating eks cluster?
+
+=======================================================================================================================================
 how will u check if there is any probe failure and how will you resolve.
+
+=======================================================================================================================================
 9. how will you create and access eks cluster?
 
 ======================================================================================================================================
 Explain ingress controller and how you specify the routes
-ChatGPT
+
 In Kubernetes, an Ingress controller is a component that acts as an entry point for incoming traffic into the cluster. It routes external requests to the appropriate services based on the requested hostname or path. It serves as an API gateway for managing inbound traffic to the services running within the cluster.
 
 The Ingress controller works in conjunction with Ingress resources, which are Kubernetes objects that define the rules and configurations for routing traffic. The Ingress resource specifies the desired routing rules, such as which hostnames or paths should be directed to which services.
@@ -71,62 +91,156 @@ Validate application configuration: Double-check the application's configuration
 
 Review recent changes: If any recent changes were made to the application or environment, consider rolling back those changes or investigating if they might be causing the crash.
 
-By troubleshooting and addressing the underlying cause of the CrashLoopBackOff state, you can resolve the issue and ensure that the Pod runs properly.
+By troubleshooting and addressing the underlying cause of the CrashLoopBackOff state, you can resolve the issue and ensure that the 
+Pod runs properly.
+
+=======================================================================================================================================
 What is the time delay in blue green ?
+
+=======================================================================================================================================
 10. what is the authenticate method to access the image from jfrog to kubernetes environment?
+
+=======================================================================================================================================
 11. what is lense?
+
+=======================================================================================================================================
 How will you check master node when it is down?
+
+=======================================================================================================================================
 What is pod disruption projects?
+
+=======================================================================================================================================
 Ingress controller ?
+
+=======================================================================================================================================
 How to restart the pods?
+
+=======================================================================================================================================
 In K8s , how can you achieve zero downtime ?
+
+=======================================================================================================================================
 What are the steps or procedures to upgrade the kubernetes version? Have you involved in such upgrading kinda procedures?
+
+=======================================================================================================================================
 How can you rectify logs in K8s?
+
+=======================================================================================================================================
 How to troubleshoot if the pod is not scheduled?
+
+=======================================================================================================================================
 Troubleshoot the pods and containers?
 
+=======================================================================================================================================
 Can we deploy a pod on particular node?
+
+=======================================================================================================================================
 How will you connect application pod with data base pod?
+
+=======================================================================================================================================
 Is it possible to connect pods which are in different namespaces
+
+=======================================================================================================================================
 what is init container and side-car container?can you give simple scenario where we use these conatiners?
+
+=======================================================================================================================================
 which one is default deployment strategy? how it works?
+
+=======================================================================================================================================
 command to check the container logs in pod?
+
+=======================================================================================================================================
 what are the types of services present in kubernetes?
+
+=======================================================================================================================================
 Kubernetes cluster maintenance?
+
+=======================================================================================================================================
 If pod exceeds then what are the steps you take ?
+
+=======================================================================================================================================
 What is the link between pod and service?
 
+=======================================================================================================================================
+
 List objects you know in kubernetes?Give a brief about each object?
+
+=======================================================================================================================================
 Command to list pods and deployments
 
+=======================================================================================================================================
+
 Components in kubernetes architecture?
+
+=======================================================================================================================================
 What are stateful sets in kuberentes?
+
+=======================================================================================================================================
 Command to find which container has failed in pod and command to get logs of container
+
+=======================================================================================================================================
 Tools to maintain kubernetes log files
 
+=======================================================================================================================================
+
 What is Pod?
+
+=======================================================================================================================================
 Creation of cluster for k8s, can we have multi master and multi nodes cluster?
+
+=======================================================================================================================================
 On what basis the pod will be deployed on a specific node?
+
+=======================================================================================================================================
 Can we deploy pod on master node?
+
+=======================================================================================================================================
 What are steps that you might take to make one node into maintance?
+
+=======================================================================================================================================
 In the kubeadm setup the control plane components are created as pods, where the defination those pods will be defined?
 
-
+=======================================================================================================================================
 Why pods are not scheduled on master
+
+=======================================================================================================================================
 Why config maps are used
+
+=======================================================================================================================================
+
+
 What is the default deployment strategy
+
+=======================================================================================================================================
 Have you faced any issues while working k8s
+
+=======================================================================================================================================
 What is service account, role, role binding and namespace
+
+=======================================================================================================================================
 Why we need helm
 
+=======================================================================================================================================
 explain any 4 different types of pod statuses and also the reasons that why pod might go into that state?
+
+=======================================================================================================================================
 what are operators and give one example where we can use operator?
-what is the importance of kubeconfig file? Also lets say when you login to kuberenets by default it will pointed to default namespace, if i want list any objects which are other namespace need concate -n option for all the kubectl commands, is there a way we can set the namaspace to aviod -n option in all the commands?
+
+=======================================================================================================================================
+what is the importance of kubeconfig file? Also lets say when you login to kuberenets by default it will pointed to default namespace, 
+if i want list any objects which are other namespace need concate -n option for all the kubectl commands, is there a way we can set the namaspace to aviod -n option in all the commands?
 given a object how do we find api version and kind with respect to cluster?
+
+=======================================================================================================================================
 any work around to bring one pod out of rotation, when multiple replicas has been deployed?
+
+=======================================================================================================================================
 How will you connect application pod with data base pod?
 
-No, it is not possible to directly connect pods that are in different namespaces within a Kubernetes cluster. Kubernetes namespaces provide isolation and separation between resources, including pods. By default, pods in one namespace cannot communicate directly with pods in another namespace.
+=======================================================================================================================================
+
+No, it is not possible to directly connect pods that are in different namespaces within a Kubernetes cluster. Kubernetes namespaces 
+provide isolation and separation between resources, including pods. By default, pods in one namespace cannot communicate directly 
+with pods in another namespace.
 However, there are a few ways to enable communication between pods in different namespaces:
 
 Cluster-wide network policy: You can create a network policy at the cluster level that allows communication between pods across namespaces. This approach requires a network plugin that supports network policies, such as Calico or Cilium. With a cluster-wide network policy, you can define rules to allow traffic between specific namespaces.
@@ -165,3 +279,5 @@ in performing advanced operations and managing resources beyond what is availabl
 
 Overall, kubectl is a powerful tool that simplifies the management and operation of Kubernetes clusters. It provides a unified 
 interface to interact with the cluster, deploy applications, monitor resources, and perform various administrative tasks.
+
+=======================================================================================================================================
