@@ -283,5 +283,29 @@ LVM Mirroring and Striping: LVM supports mirroring and striping of LVs to enhanc
 creates duplicate copies of LVs on separate PVs, providing redundancy, while striping distributes data across multiple PVs, 
 improving I/O performance
 ==================================================================================================================================
+how will remove the non-running services in the VM
 
+To remove non-running services in a VM, you can follow these general steps:
+
+Identify the Non-Running Services: Use a command or tool to list all the services or processes running on the VM. For example, on a 
+Linux-based system, you can use the systemctl command or tools like ps or top to identify running services.
+
+Determine the Status of Services: Check the status of each service to determine if it is running or not. Running services are typically 
+indicated as "active" or "running" in the output of the service listing command.
+
+Stop Non-Running Services: For services that are not running, use the appropriate command or tool to stop them. On Linux-based 
+systems, you can use the systemctl stop <service-name> command to stop a service.
+
+Disable Non-Running Services: To prevent non-running services from starting automatically on system boot, you can disable them.
+On Linux-based systems, you can use the systemctl disable <service-name> command to disable a service.
+
+Remove Non-Running Services: Depending on your specific requirements, you may choose to remove the configuration files and other 
+associated resources of the non-running services. However, exercise caution when removing system files to avoid any unintended 
+consequences. Removing service files should be done only if you are sure that the service is no longer needed.
+
+It's important to note that the specific commands and steps may vary depending on the operating system and package management system 
+used in your VM. Make sure to refer to the documentation or online resources specific to your operating system for accurate and 
+detailed instructions. Additionally, exercise caution when modifying services on a VM, as it may impact the functionality and 
+stability of the 
+system.
 
