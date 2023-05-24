@@ -47,3 +47,26 @@ What is ansible serial
 You can do rolling updates in Ansible using the serial keyword. This gives you the ability to specify the number of hosts you want to
 execute against at a time on a per-playbook basis. This also allows you to slowly ramp up your deployment in batches by providing an 
 increasing list
+====================================================================================================================================
+What is the use of gather facts in ansible
+ChatGPT
+In Ansible, the "gather facts" process refers to collecting information about the target hosts before executing tasks. The "gather facts" step is performed using Ansible's setup module, which runs on each target host and collects system-related information.
+
+The purpose of gathering facts is to provide Ansible with important details about the target hosts, such as the operating system, IP addresses, network interfaces, available resources (CPU, memory), disk information, installed packages, and other system-level data. This information is collected and stored in Ansible's inventory, making it accessible for use in playbook tasks and templates.
+
+The gathered facts can be used in various ways, including:
+
+Conditional execution: You can use the gathered facts to conditionally execute specific tasks based on the target host's characteristics. For example, you may want to run different tasks for different operating systems or only execute certain tasks if specific conditions are met.
+
+Variable assignment: The gathered facts can be stored in variables and used later in the playbook. This allows you to access and use the system information dynamically during playbook execution.
+
+Configuration management: The gathered facts help in generating configuration files or templates dynamically based on the target host's properties. For instance, you can use the gathered network interface information to generate network-related configuration files.
+
+Auditing and reporting: The gathered facts provide valuable information for auditing and reporting purposes. You can retrieve details about the target hosts and save them for documentation or further analysis.
+
+By default, Ansible automatically gathers facts for all hosts in the playbook using the setup module. However, you can control the gathering behavior by configuring the gather_facts parameter in your playbook or by specifying it on a per-task basis.
+
+Overall, gathering facts in Ansible allows you to have a better understanding of the target hosts and their current state, enabling 
+you to make informed decisions and perform more targeted and effective automation tasks.
+
+=======================================================================================================================================
