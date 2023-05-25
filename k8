@@ -1008,8 +1008,46 @@ Also lets say when you login to kuberenets by default it will pointed to default
 if i want list any objects which are other namespace need concate -n option for all the kubectl commands, is there a way we can set the namaspace to aviod -n option in all the commands?
 given a object how do we find api version and kind with respect to cluster?
 
+Yes, you can set the default namespace in Kubernetes to avoid specifying the -n option in every kubectl command. You can use the kubectl config set-context command to set the default namespace for a specific context. Here's an example:
+
+arduino
+Copy code
+kubectl config set-context --current --namespace=<namespace-name>
+Replace <namespace-name> with the desired namespace you want to set as the default. The --current flag ensures that the change is applied to the current context.
+
+After running this command, all subsequent kubectl commands will use the specified namespace as the default, and you won't need to explicitly provide the -n option unless you want to operate in a different namespace.
+
+Regarding finding the API version and kind of an object with respect to the cluster, you can use the kubectl explain command. Here's the syntax:
+
+
+kubectl explain <api-resource> --recursive
+Replace <api-resource> with the specific resource type you want to get information about, such as pods, services, or deployments.
+
+Running this command with the --recursive flag provides detailed information about the specified resource, including its API version, kind, supported fields, and other relevant details. This helps you understand the structure and available options for creating or modifying that particular resource in the cluster.
+
+For example, to find information about the Deployment resource, you can run:
+
+
+kubectl explain deployment --recursive
+The command output will provide detailed information about the Deployment resource, including its API version (apps/v1 in Kubernetes 1.22) and kind (Deployment).
+
+Using kubectl explain is a handy way to explore and understand the API resources available in your cluster and their associated properties.
+
 =======================================================================================================================================
 any work around to bring one pod out of rotation, when multiple replicas has been deployed?
+In Kubernetes, if you want to temporarily take one specific pod out of rotation while keeping the other replicas running, you can make use of a Pod Disruption Budget (PDB) and update the pod's label or annotation to exclude it from the PDB's disruption calculations. Here's a step-by-step approach:
+
+Create a Pod Disruption Budget: Define a Pod Disruption Budget object that specifies the maximum number or percentage of pods that can be unavailable simultaneously. This ensures high availability while allowing controlled disruptions.
+
+Label or Annotate the Pod: Add a specific label or annotation to the pod that you want to exclude from the PDB calculations. This label or annotation will identify the pod and mark it as ineligible for disruption.
+
+Update the PDB: Modify the existing Pod Disruption Budget to include a selector that excludes the labeled or annotated pod from the budget's calculations. This will ensure that the PDB does not count the excluded pod when determining the number of available replicas.
+
+By following this approach, you can bring one specific pod out of rotation without affecting the other replicas. The PDB will prevent further disruptions beyond the specified limit, ensuring that the desired number of replicas remains available even when excluding the specified pod.
+
+Keep in mind that when the excluded pod returns to a healthy state, you should remove the label or annotation to allow it to be included in the rotation again.
+
+Note: It's important to exercise caution when excluding pods from rotation, as it may impact the availability and capacity of your application. Ensure that you have a proper monitoring and alerting mechanism in place to detect and address any issues that may arise during the exclusion period.
 
 =======================================================================================================================================
 How will you connect application pod with data base pod?
