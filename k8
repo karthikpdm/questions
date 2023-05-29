@@ -1,6 +1,6 @@
 1) Installing procedure of the k8s cluster using the kubeadem
 
-To install a Kubernetes cluster using kubeadm, you can follow these general steps:
+To install a Kubernetes cluster using kubeadm, you can follow these general steps
 
 a) Prerequisites:
 
