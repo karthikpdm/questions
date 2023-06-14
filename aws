@@ -2,7 +2,7 @@ What are roles and policies in AWS IAM?
 Vpc endpoint in AWS?
 =====================================================================================================================================
 Explain VM patching
-ChatGPT
+
 VM patching refers to the process of applying software updates, known as patches, to virtual machines (VMs) in order to fix vulnerabilities, improve performance, or add new features. Patching is an important security and maintenance practice to ensure that VMs are up to date and protected against known vulnerabilities.
 
 The VM patching process typically involves the following steps:
@@ -24,7 +24,7 @@ Documentation and record keeping: Maintain a record of the patches applied to ea
 It is important to have a well-defined and consistent patching process in place to ensure that VMs are regularly updated with the latest patches. This helps mitigate security risks, maintain system stability, and comply with industry best practices.
 =======================================================================================================================================
 What will u do if load balancer goes down 
-ChatGPT
+
 If the load balancer goes down, you would typically follow these steps to address the situation:
 
 Identify the issue: Determine the root cause of the load balancer failure. This could be due to a hardware or software issue, misconfiguration, or network problem.
@@ -42,7 +42,7 @@ Perform a post-incident analysis: After resolving the load balancer issue, condu
 The specific steps may vary depending on your environment, the type of load balancer being used, and any failover mechanisms or redundancy configurations you have in place.
 =========================================================================================================================================
 How will u get to know the traffic is high for a particular application
-ChatGPT
+
 To determine if the traffic is high for a particular application, you can use various monitoring and observability tools. Here are a few commonly used approaches:
 
 Monitoring tools: Utilize monitoring solutions like Prometheus, Grafana, or Datadog to collect and analyze application metrics such as CPU usage, memory consumption, network traffic, request rates, and response times. These tools often provide visualizations, alerts, and dashboards to help you identify periods of high traffic.
@@ -57,14 +57,14 @@ Network monitoring: Use network monitoring tools such as Wireshark or tcpdump to
 
 By leveraging these monitoring approaches, you can gather data and insights about the application's performance and traffic levels. This information can help you identify when the traffic is high and take appropriate actions to handle the increased load, such as scaling resources, optimizing code, or adding caching layers.
 How many buckets can be created in s3
-ChatGPT
+
 In Amazon S3, the maximum number of buckets that can be created per AWS account is 1000. This limit is a soft limit and can be 
 increased by requesting a service limit increase from AWS Support. It's important to note that this limit applies to the total number 
 of buckets across all AWS regions within an AWS account.
 
 What is OSI model ? Tell the layers ?
 What is SSO
-ChatGPT
+
 SSO stands for Single Sign-On. It is an authentication and authorization mechanism that allows users to access multiple applications or systems using a single set of login credentials. With SSO, users only need to authenticate once, typically at the beginning of their session, and then they can access multiple applications without having to re-enter their credentials for each application.
 
 The main purpose of SSO is to simplify the login process for users and enhance security by reducing the need for multiple usernames and passwords. Instead of remembering and managing multiple sets of credentials, users can authenticate once and then seamlessly access multiple applications or systems.
@@ -75,7 +75,7 @@ There are different protocols and standards used for implementing SSO, such as S
 
 SSO offers several benefits, including improved user experience, increased productivity, simplified user management, and centralized security control. It is widely used in enterprise environments to streamline access to various systems, applications, and resources while maintaining security and reducing administrative overhead.
 How do u create dynamic autoscaling group 
-ChatGPT
+
 To create a dynamic autoscaling group in AWS, you can use AWS services like Amazon EC2 Auto Scaling and AWS CloudFormation. Here's an overview of the steps involved:
 
 Define your launch template: A launch template specifies the configuration details for the instances that will be launched in your autoscaling group. This includes the Amazon Machine Image (AMI), instance type, security groups, user data, and other settings.
