@@ -48,7 +48,7 @@ external credential stores or secret management systems, such as HashiCorp Vault
 
 
 What is Devops and why do we need it
-ChatGPT
+
 DevOps is a set of practices and principles that combine software development (Dev) and IT operations (Ops) to enhance collaboration, efficiency, and delivery of software products or services. It aims to bridge the gap between development teams and operations teams, enabling them to work together seamlessly throughout the entire software development lifecycle.
 
 The primary goals of DevOps include:
@@ -71,7 +71,7 @@ In summary, DevOps helps organizations streamline their software development and
 
 User
 Before devops how was the software development
-ChatGPT
+
 Before the advent of DevOps, software development and delivery processes were often characterized by siloed teams, manual handoffs, and longer release cycles. The traditional approach involved distinct development and operations teams working independently, which could lead to inefficiencies, delays, and quality issues. Here are some key characteristics of software development before DevOps:
 
 Siloed Teams: Development teams and operations teams worked in isolation, leading to a lack of collaboration and communication. Developers focused on writing code, while operations teams were responsible for deploying and maintaining the software.
@@ -94,7 +94,7 @@ The emergence of DevOps introduced a paradigm shift by emphasizing collaboration
 
 User
 Explain the stages in devops life cycle.
-ChatGPT
+
 The DevOps lifecycle consists of several stages that collectively form a continuous process of software development, testing, deployment, and operations. Here are the key stages in the DevOps lifecycle:
 
 Plan: In this stage, the development team collaborates with stakeholders to define project goals, requirements, and timelines. It involves planning the features, identifying resources, and setting priorities for the software development process.
