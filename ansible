@@ -49,7 +49,6 @@ execute against at a time on a per-playbook basis. This also allows you to slowl
 increasing list
 ====================================================================================================================================
 What is the use of gather facts in ansible
-ChatGPT
 In Ansible, the "gather facts" process refers to collecting information about the target hosts before executing tasks. The "gather facts" step is performed using Ansible's setup module, which runs on each target host and collects system-related information.
 
 The purpose of gathering facts is to provide Ansible with important details about the target hosts, such as the operating system, IP addresses, network interfaces, available resources (CPU, memory), disk information, installed packages, and other system-level data. This information is collected and stored in Ansible's inventory, making it accessible for use in playbook tasks and templates.
