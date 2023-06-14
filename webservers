@@ -21,7 +21,7 @@ sudo tail -f /opt/tomcat/logs/catalina.out
 
 ======================================================================================================================================
 If there service issue because of which could not able to access the application how will you resolve it.
-ChatGPT
+
 If there is a service issue that is causing the application to be inaccessible, here are some steps you can take to resolve it:
 
 Check service status: Determine if the service that the application relies on is running or not. Use commands like systemctl status <service-name> or service <service-name> status to check the status of the service. Restart the service if necessary using systemctl restart <service-name> or service <service-name> restart.
@@ -66,7 +66,7 @@ content to a global audience.
 
 ========================================================================================================================================
 Explain how you host your web application? Tell me overall steps involved
-ChatGPT
+
 Hosting a web application involves several steps. Here's an overview of the process:
 
 Choose a Hosting Provider: Select a hosting provider that suits your needs and budget. Popular options include cloud platforms like Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform, as well as managed hosting providers.
