@@ -1,42 +1,217 @@
 when i issue mvn install what all things happen in background? image
+1) Parsing the Project: Maven reads and parses the project's pom.xml file to understand the project's structure, dependencies, 
+build configurations, and other project-specific details.
 
-what are the settings you need to do before running mvn deploy? Ans : with respect where we are uploading our artifacts like jfrog,nexas etc we need to give the url of the reposiory and username and password of that remote repository.
+2) Dependency Resolution: Maven resolves the project's dependencies by checking local and remote repositories specified in the
+pom.xml file. It downloads any missing dependencies and their transitive dependencies, ensuring that the required libraries 
+are available for the build.
 
-why maven takes much time for 1st execution and from 2nd execution it will take less time? Ans:so for the first time if we clone the repo it will store it in the .m2 folder so if we clone for the 2nd time it first check in the local repo and if it already exist then it will skip the cloaning, other then that it will clone.
+3) Compiling Source Code: Maven compiles the project's source code files, such as Java classes, into bytecode. It follows the 
+project's build configuration defined in the pom.xml file, including compilation settings, source code directories, and 
+compiler plugins.
 
-what is multi module project in maven and what are the setting you want to do in multi module parent and child project? what is dependency management?
+4) Running Tests: Maven executes any unit tests defined in the project. It looks for tests located in the standard directory
+(src/test/java) and executes them using the configured test framework (e.g., JUnit). The test results are recorded.
+
+5) Packaging the Artifact: Maven packages the compiled code and resources into a distributable format based on the project's 
+packaging type. For example, for a Java project, it may generate a JAR file, while for a web application, it may create a WAR file.
+
+6) Installing the Artifact: The install goal copies the project's packaged artifact (e.g., JAR, WAR) into the local Maven 
+repository. This repository is typically located in the .m2 directory in the user's home folder. The artifact is organized 
+based on its group ID, artifact ID, version, and other project details.
+
+7) Generating Documentation (Optional): If the project is configured to generate documentation (e.g., using Maven plugins 
+like Javadoc), Maven may generate the documentation files during the build process.
+
+These are the primary actions that occur when you run mvn install. Maven's build lifecycle and plugins handle these steps 
+automatically based on the project configuration. The specific behaviors and configurations can be customized in the 
+pom.xml file using various Maven plugins and settings.
+
+
+
+====================================================================================================================================
+what are the settings you need to do before running mvn deploy?
+Ans : with respect where we are uploading our artifacts like jfrog,nexas etc we need to give the url of the reposiory and 
+username and password of that remote repository.
+
+====================================================================================================================================
+why maven takes much time for 1st execution and from 2nd execution it will take less time? 
+Ans:
+a) Dependency Resolution: During the first execution, Maven needs to resolve all the project dependencies and their 
+transitive dependencies. It downloads these dependencies from remote repositories and caches them in the local Maven 
+repository (.m2 directory). This process involves network communication and downloading of potentially large artifact 
+files, which can take time. However, on subsequent executions, Maven can reuse the already downloaded dependencies from the 
+local repository, resulting in faster resolution.
+
+b) Compilation: Maven performs a full compilation of the project's source code during the first execution. This includes 
+compiling all the source files, running annotation processors, and generating bytecode. Subsequent executions may be 
+incremental, meaning that Maven only recompiles the modified source files or files affected by the changes, resulting in 
+faster build times.
+
+c) Build Caching: Maven build systems like Apache Maven and Gradle utilize build caching mechanisms to speed up subsequent 
+builds. Once the initial build is complete, Maven caches the build output, including compiled classes and intermediate 
+artifacts. On subsequent executions, Maven can detect which parts of the project have not changed and reuse the cached 
+build output, resulting in faster builds.
+
+d) Incremental Processing: Maven build plugins, such as the compiler plugin, utilize incremental processing. This means that
+they only perform the necessary tasks for the modified or affected parts of the project. For example, if you make changes 
+to a specific Java file, Maven will recompile only that file and its dependencies, rather than recompiling the entire 
+project. Incremental processing reduces the time required for subsequent builds.
+
+e) git cloning: so for the first time if we clone the repo it will store it in the .m2 folder so if we clone for the 2nd time it first 
+check in the local repo and if it already exist then it will skip the cloaning, other then that it will clone.
+
+====================================================================================================================================
+
+what is multi module project in maven and what are the setting you want to do in multi module parent and child project?
+In Maven, a multi-module project is a project structure that consists of multiple subprojects or modules, where each module represents a separate project on its own but is managed as part of the larger parent project. The parent project acts as an aggregator that manages and builds all the modules together, providing a convenient way to organize and build complex projects with interdependent modules.
+
+Here are the key settings and configurations you need to consider when working with a multi-module project in Maven:
+
+Parent Project (pom.xml):
+
+<modules>: In the parent project's pom.xml file, you need to define the list of modules (child projects) that are part of the multi-module project. This allows Maven to understand the project structure and the relationship between modules.
+xml
+Copy code
+<modules>
+  <module>module1</module>
+  <module>module2</module>
+  ...
+</modules>
+<packaging>: The parent project's packaging type is usually set to pom to indicate that it doesn't produce any deliverable artifact itself but serves as an aggregator for the modules.
+xml
+Copy code
+<packaging>pom</packaging>
+Child Projects (Modules):
+
+<parent>: In each child project's pom.xml file, you need to specify the parent project as its parent. This establishes the parent-child relationship and inherits the configuration from the parent.
+xml
+Copy code
+<parent>
+  <groupId>com.example</groupId>
+  <artifactId>parent-project</artifactId>
+  <version>1.0.0</version>
+</parent>
+<dependencies> and <dependencyManagement>: Dependencies specific to each module can be declared in their respective pom.xml files. The parent project can also define a <dependencyManagement> section to centralize and manage the versions of dependencies across all modules.
+xml
+Copy code
+<dependencies>
+  <!-- Module-specific dependencies -->
+</dependencies>
+<dependencyManagement>
+  <!-- Centralized dependency versions -->
+</dependencyManagement>
+Build and Plugin Management:
+
+<build>: The parent project can define common build configurations that are inherited by all modules. This includes settings related to compilation, testing, packaging, and plugins.
+xml
+Copy code
+<build>
+  <!-- Common build configurations -->
+</build>
+<pluginManagement>: The parent project's pom.xml file can contain a <pluginManagement> section to manage plugins' versions and configurations. This allows you to centralize and control the usage of plugins across all modules.
+xml
+Copy code
+<pluginManagement>
+  <plugins>
+    <!-- Common plugin configurations -->
+  </plugins>
+</pluginManagement>
+Inter-module Dependencies: If there are dependencies between modules, you can specify them in the child projects' pom.xml files. This ensures that the build order and dependencies are properly resolved.
+
+xml
+Copy code
+<dependencies>
+  <dependency>
+    <groupId>com.example</groupId>
+    <artifactId>module2</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+</dependencies>
+Building the Project: To build the multi-module project, you can run Maven commands from the parent project's directory. Maven will recursively build all the modules in the specified order, taking into account inter-module dependencies.
+
+By organizing your project as a multi-module project in Maven, you can manage dependencies, build configurations, and interdependencies more efficiently. The parent project provides an umbrella structure, while the child module
+
+====================================================================================================================================
+what is dependency management?
+
+====================================================================================================================================
 what is transitive dependency?
+
+====================================================================================================================================
 
 .m2 is local repository for maven, now I don’t want to use .m2 folder as my local repository I want to use some other folder as my local, is it possible in maven? If yes, how would you do that? m2 folder is the default folder used by maven to store its: settings.xml file which specifies properties, like the central repository to download your dependencies, the location of the so-called localRepository. by default, the localRepository in which maven stores all the dependencies your project might need to run.
 mvn install -Dmaven.repo.local=/alternate/repo/location 
 maven follows convention over configuration that means it assumes code should be there under src/main/java, test cases under src/tests and many more.Here my requirement is I don’t want to follow that conventions I need to use different folder structure is that possible in maven?
 mvn help:effective-pom -Doutput=pom_eff.xml
-What are dependency and plugin in maven? Give one example for each? A Maven plugin is an addition you can utilize to create your artifact (maven-jar-plugin is used to make a jar out of your compiled classes and resources). A library required by the application you are building during compilation, test, or runtime is known as a dependency.
 
-What are 3 build life cycles in maven? There are three built-in build lifecycles. default: handles project build and deployment. clean: handles project cleaning. site: handles the creation of project site documentation.
+====================================================================================================================================
+What are dependency and plugin in maven? Give one example for each? A Maven plugin is an addition you can utilize to create 
+your artifact (maven-jar-plugin is used to make a jar out of your compiled classes and resources).
+A library required by the application you are building during compilation, test, or runtime is known as a dependency.
 
-Maven Build Phases Maven build lifecycle goes through a set of stages, they are called build phases. For example, the default lifecycle is made up of the following phases.
+====================================================================================================================================
 
-validate compile test package verify install deploy The build phases are executed sequentially. When we run a maven build command, we specify the phase to be executed. Any maven build phases that come before the specified phase is also executed. For example, if we run mvn package then it will execute validate, compile, test, and package phases of the project.
+What are 3 build life cycles in maven? 
+There are three built-in build lifecycles. 
+default: handles project build and deployment. 
+clean: handles project cleaning. 
+site: handles the creation of project site documentation.
+
+Maven Build Phases Maven build lifecycle goes through a set of stages, they are called build phases. For example, the default 
+lifecycle is made up of the following phases.
+
+a) validate compile test package verify install deploy The build phases are executed sequentially. When we run a maven build
+command, we specify the phase to be executed. Any maven build phases that come before the specified phase is also 
+executed. For example, if we run mvn package then it will execute validate, compile, test, and package phases of the project.
 
 Maven Build Goals A build phase is made up of a set of goals. Maven goals represent a specific task that contributes to the building and managing of a project. Sometimes, a maven goal is not bound to a build phase. We can execute these goals through the command line. The syntax to execute a goal
 
+
+====================================================================================================================================
 In Which tag we will mention output artifact type( like jar, war or any other)?
 
+====================================================================================================================================
 What are things you need to set, if you want download dependency from private repository ?
+
+====================================================================================================================================
 What are the issues you faced while working on maven projects?
+
+====================================================================================================================================
 Command to skip the test cases in maven
 
+====================================================================================================================================
+
 what is multi module project?
+
+====================================================================================================================================
 what is the importance of dependency managment?
+
+====================================================================================================================================
 what are the settings that you need to do for mvn deploy ( to push artifcats to repository )?
+
+====================================================================================================================================
 mvn version that you have used?
 
+====================================================================================================================================
 Tell me 3 build lifecycle in maven? What does mvn site does?
+
+====================================================================================================================================
 Is there way by which we can set local repository as some other custom directory, other than .m2?
+
+====================================================================================================================================
 Settings that you make for mvn deploy?
+
+====================================================================================================================================
 What is the default value of packaging tag? What other values for other artifact types?
+
+====================================================================================================================================
 What are GAV's? 
 
+====================================================================================================================================
 what are the tags that you came across in pom.xml?
+
+====================================================================================================================================
 Explain maven life cycle?
+
+====================================================================================================================================
