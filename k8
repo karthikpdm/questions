@@ -1,4 +1,4 @@
-1) Installing procedure of the k8s cluster using the kubeadem
+1) Installing procedure of the k8s cluster using the kubeadem?
 
 To install a Kubernetes cluster using kubeadm, you can follow these general steps
 
@@ -1515,4 +1515,49 @@ You can use the kubectl get role command to verify that the Role has been create
 arduino
 Copy code
 kubectl get role my-role -n <namespace>
-By following these steps, you have created a Role in Kubernetes that grants specific access permissions to resources within a given namespace. The Role can be used in RoleBindings to associate it with users, service accounts, or groups, and define their access within the cluster.
+By following these steps, you have created a Role in Kubernetes that grants specific access permissions to resources 
+within a given namespace. The Role can be used in RoleBindings to associate it with users, service accounts, or groups, 
+and define their access within the cluster.
+
+====================================================================================================================================
+
+reasons for pods is in pending state how to debug?
+
+When Kubernetes pods are in a pending state, it means that the scheduler is unable to schedule them to run on 
+any available nodes in the cluster. There can be several reasons why pods remain in a pending state. Here are 
+some common issues and steps to debug them:
+
+Insufficient resources: Check if your cluster has enough available resources (CPU, memory, storage) to accommodate the 
+pod. You can use the kubectl describe node command to see the available resources on each node. If there are not enough 
+resources, consider scaling up your cluster or adjusting resource requests and limits for the pod.
+in the events the message will be insufficuient memory
+
+Node taints and tolerations: Nodes in the cluster may have taints applied to them, and the pod might not have the 
+corresponding toleration specified. Taints prevent pods from running unless they have the required tolerations. You 
+can use the kubectl describe node command to check for taints on the nodes and ensure that the pod's tolerations match.
+
+Node affinity and anti-affinity: If you have specified node affinity or anti-affinity rules for your pod, make sure 
+they are correctly configured and that the nodes meet the specified conditions. Incorrect or conflicting affinity rules 
+can prevent pods from being scheduled.
+
+Insufficient pod scheduling constraints: If you have defined custom scheduling constraints using PodAffinity, PodAntiAffinity,
+or NodeSelectors, ensure that the conditions are met and the nodes fulfill the required criteria. Incorrect constraints 
+can prevent pod scheduling.
+
+PersistentVolumeClaim (PVC) issues: If your pod requires a PersistentVolumeClaim, make sure that the requested storage is 
+available and that the PVC is correctly configured. Insufficient storage or misconfigured PVCs can prevent pod scheduling.
+
+Network-related issues: If the pod relies on network connectivity, ensure that the required network plugins, such as network 
+policies or network plugins like Calico, are correctly installed and configured. Network misconfigurations can lead to pod
+scheduling problems.
+
+Admission controllers and pod security policies: If you have enabled any admission controllers or pod security policies, 
+check if they are blocking the pod from being scheduled. Review the controller and policy configurations to ensure they 
+align with the pod's requirements.
+
+Inspect events and logs: Use the kubectl describe pod command to check for any relevant events or error messages associated 
+with the pending pod. Additionally, review the logs of the scheduler, controller manager, and kubelet on the cluster nodes 
+for any related errors or warnings.
+
+By examining these factors and investigating the relevant logs and events, you can typically identify the reason for pods 
+ being in a pending state.
