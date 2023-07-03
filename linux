@@ -357,7 +357,7 @@ how to troubleshoot the networking at the instance level
 
 To troubleshoot networking at the instance level, you can follow these steps:
 
-Verify network connectivity:
+1) Verify network connectivity:
 
 Check if the instance has an active network connection.
 Ping a known IP address or domain name from the instance to check if it can reach external networks.
@@ -367,9 +367,9 @@ Review instance networking configuration:
 Check the instance's network settings, such as IP address, subnet, gateway, and DNS configurations.
 Ensure that the instance has the correct network configuration and is assigned to the appropriate subnet.
 Verify that the network settings are consistent with your network infrastructure requirements.
-Check security group and firewall rules:
 
-Review the security group rules associated with the instance.
+Check security group and firewall rules:
+ Review the security group rules associated with the instance.
 Ensure that the necessary ports are open for the desired network services.
 Make sure that there are no overly restrictive rules or conflicting rules that might be blocking network traffic.
 Inspect network interfaces:
@@ -378,7 +378,7 @@ Verify that the instance has the correct network interface attached.
 If the instance has multiple network interfaces, confirm that they are properly configured and connected to the correct subnets.
 Check for network congestion or bandwidth limitations:
 
-Monitor network traffic and utilization on the instance.
+Monitor network traffic and utilization on the instance. 
 Identify any patterns of congestion or high bandwidth usage that could impact networking performance.
 Consider upgrading your instance type or adjusting your network capacity if bandwidth limitations are causing issues.
 Review network logs and error messages:
@@ -443,4 +443,115 @@ relevant metrics.
 These commands should help you diagnose and troubleshoot networking issues at the instance level in Linux. Combine them 
 with appropriate options and filters as needed to gather the necessary information for debugging.
 
+======================================================================================================================================
 
+file system of the linux system?
+
+Linux Binary Directory
+Binary files are the files which contain compiled source code (or machine code). They are also called executable 
+files because they can be executed on the computer.
+
+1) Binary directory contains following directories:
+
+/bin - The '/bin' directory contains user binaries, executable files, Linux commands that are used in single user mode,
+       and common commands that are used by all the users, like cat, cp, cd, ls, etc.
+       The '/bin' directory doesn't contain directories.
+
+/sbin - The '/sbin' directory also contains executable files, but unlike '/bin' it only contains system binaries 
+         which require root privilege to perform certain tasks and are helpful for system maintenance purpose. 
+        e.g. fsck, root, init, ifconfig
+
+/lib - The '/lib' directory contains shared libraries which are often used by the '/bin' and '/sbin' directories.
+
+/opt - The term 'opt' is short for optional. Its main purpose is to store optional application software packages. 
+       Add-on applications from individual vendors should be installed in '/opt'. And so in some systems '/opt' is 
+        empty as they may not have any add-on application.
+
+2) the configuration directory contains configured files which configures the parameters and initial settings for 
+some computer programs.
+
+Configuration directory have following sub-diectories:
+
+/boot - The '/boot' directory contains boot loader files which are essential to boot the system. In other words, they
+        only contain files which are needed for a basic Linux system to get up and going.
+
+/etc - All the machine related configurtion files are kept in '/etc'. Almost everything related to the configuration of 
+       your system is placed here. It also contain startup and shutdown shell script which is used to start and stop a program. 
+       All the files are static and text based and no binary files can be placed in this directory.
+
+3) Linux Data directory
+Data directory is used to store data of the system.
+
+Data directory contains following directories.
+
+/home - The '/home' directory stores users personnel files. After the '/home' there is a directory which is generally 
+         named at the user's name like we have '/home/sssit'. Inside this directory we have our sub-directories like 
+        Desktop, Downloads, Documents, pictures, etc.
+
+/root - The '/root' directory is the home directory of the root user.
+        Please note that '/root' directory is different from (/) root.
+
+/srv - The term 'srv' is short for service. The '/srv' directory contains server specific data for services provided by the 
+        system like www, cvs, rysync, ftp,
+/media
+/mnt
+/tmp - The term 'tmp' stands for temporary. Data stored in '/tmp' is temporary and may use either disk space or RAM. When 
+       system is rebooted, files under this directory is automatically deleted. So it is advisable that never use '/tmp' 
+       to store important data.
+
+4) Linux Memory Directory
+Memory directory contains files of the whole system. All the device information, process running indata or system related
+information are stored in this directory.
+
+Memory directory contains the following directories.
+
+/dev - The term 'dev' is short for device. As you know in Linux operating system everything is a file. It appears to 
+be an ordinary file but doesn't take up disk space. Files which are used to represent and access devices are stored here 
+including terminal devices like usb. All the files stored in '/dev' are not related to real devices, some are related 
+to virtual devices also.
+
+/proc
+
+/sys
+
+5)Variable Directory (/var)
+The term 'var' is short for varible. Files that have an unexpected size and whose content is expected to change
+continuously (that's why it is named as variable) during normal operation of the system are stored here. 
+For example, log files, spool files and cache files.
+
+/var/log - The '/var/log' directory contains all log files.
+/var/cache - The '/var/cache' directory stores application cache data. Cache data are locally generated by I/O or 
+             calculation. Cache must be able to regenerate or restore the data. These files can be deleted without any 
+              loss of data
+/var/spool
+/var/lib - The '/var/lib' directory stores the files that contains state information like databases. File's data modifies as their 
+           respective programs run.
+
+
+
+==============================================================================================================================
+how to check the system logs
+
+
+To check system logs in Linux, you can use various commands and tools depending on the specific distribution and logging 
+system in use. Here are some common methods:
+
+journalctl: This command is used to query the systemd journal, which is the default logging system in many modern 
+Linux distributions. It provides a centralized and structured view of system logs.
+
+To display the most recent system logs, use journalctl -xe.
+To view the entire log history, use journalctl.
+You can filter logs based on specific criteria like time, unit (service), or log level.
+Log files in /var/log/: Linux distributions store various log files in the /var/log/ directory. You can use tools 
+like cat, less, or tail to view the contents of these files.
+
+For example, cat /var/log/syslog displays the system log file.
+Other common log files include messages, auth.log, kern.log, secure, and dmesg.
+dmesg: This command displays the kernel ring buffer, which contains messages from the kernel and device drivers. It can 
+provide information about hardware initialization, driver loading, and system events.
+
+tail: Use the tail command to view the last few lines of a log file, which can be useful for real-time monitoring or checking 
+the latest entries.
+
+For example, tail -f /var/log/syslog displays the last few lines of the syslog file and continues to update as new log entries 
+are added.
