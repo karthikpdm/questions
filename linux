@@ -14,7 +14,27 @@ number of parameters might also vary( only 2 parameters user might supply someti
 
 write a script which accepts file or folder, if its folder delete it else print "this is a file"?
 ==================================================================================================================================
+how do u get to know weather it is a built in and where it will execute?
+type -a <command>
+=============================================================================================================================
+where does the neworking commands will execute by default?
+By default, commonly used networking commands are located in directories that are included in the PATH. These directories may include:
 
+/usr/bin: This directory contains many essential system commands, including common networking utilities like 
+ping, ifconfig, netstat, traceroute, etc.
+
+/sbin: This directory holds system binaries related to system administration, including some networking commands like 
+ifconfig, route, iptables, etc.
+
+/usr/sbin: Similar to /sbin, this directory contains system binaries related to system administration, including 
+networking commands like arp, tcpdump, ip, etc.
+=============================================================================================================================
+how to get to know in which location the commands are executed?
+which <command name>
+=============================================================================================================================
+
+==================================================================================================================================
+what is uptime?
 currrent system time
 duration for which system has been running (system is running since 18 minutes)
 number of users logged in (2 users are logged in)
