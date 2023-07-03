@@ -14,6 +14,58 @@ number of parameters might also vary( only 2 parameters user might supply someti
 
 write a script which accepts file or folder, if its folder delete it else print "this is a file"?
 ==================================================================================================================================
+
+currrent system time
+duration for which system has been running (system is running since 18 minutes)
+number of users logged in (2 users are logged in)
+system load average CPU load for past 1, 5 and 15 minutes.
+==================================================================================================================================
+vi editer commands
+To delete:
+
+Commands	Action
+x	 - Delete the current character
+X	 - Delete the character before the cursor
+r	 - Replace the current character
+xp	 - Switch two characters
+dd	 - Delete the current line
+D	 - Delete the current line from current character to the end of the line
+dG	 - delete from the current line to the end of the file
+
+To repeat and undo:
+
+u - 	Undo the last command
+.	 - Repeat the last command
+Redo the last undo: Ctrl + r
+
+Command to cut, copy and paste:
+
+dd - 	Delete a line
+yy - 	(yank yank) copy a line
+p	 - Paste after the current line
+P	 - Paste before the current line
+
+Command to cut, copy and paste in blocks:
+
+<n>dd - 	Delete the specified n number of lines
+<n>yy - 	Copy the specified n number of lines
+
+Start and end of line:
+
+θ - 	Bring at the start of the current line
+^	 - Bring at the start of the current line
+$	 - Bring at the end of the current line
+dθ	 - Delete till start of a line
+d$	 - Delete till end of a line
+G - jump to the last line of a file
+nG - to jump to the particular line
+ 
+Joining lines:
+
+J - 	Join two lines
+yyp - 	Repeat the current line
+ddp - 	Swap two lines
+==================================================================================================================================
 Listing it’s link how to find that is hardlink or soft link tell me the command ?
 -rw-r--r-- 1 user group  1024 May 20 10:30 file.txt
 drwxr-xr-x 2 user group  4096 May 20 10:30 directory
