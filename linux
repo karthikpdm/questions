@@ -11,6 +11,91 @@ scp /mnt/c/path/to/file.txt username@linux-machine-ip:/path/on/linux
 3)A shell script named test.sh can accept 4 parameters i.e, a,b,c,d. the parameters wont be supplied in order always and 
 number of parameters might also vary( only 2 parameters user might supply sometimes), how to identify position of letter c?
 ==================================================================================================================================
+how to set the password to the user in ubuntu
+
+To set or change the password for a user in Ubuntu, you can use the passwd command. This command allows you to set
+or reset the password for a user account. Here's how to do it:
+
+Open a terminal:
+
+You can open a terminal by pressing Ctrl + Alt + T on the keyboard or by searching for "Terminal" in the application launcher.
+Run the passwd command:
+
+In the terminal, type the following command:
+Copy code
+sudo passwd username
+Replace "username" with the username of the user whose password you want to set or change. For example, if you want to set the password for the user "john", the command would be: sudo passwd john.
+You will be prompted to enter the new password for the user. When typing the password, you won't see any characters on the screen for security reasons. Just type the password and press Enter.
+Confirm the new password:
+
+You will be asked to re-enter the password to confirm it. Type the password again and press Enter.
+==================================================================================================================================
+how to enable the password authintication in ubuntu?
+
+To enable password authentication in Ubuntu, you need to modify the SSH server configuration. By default, Ubuntu uses 
+SSH key-based authentication for increased security. Here's how you can enable password authentication:
+
+A) Open a terminal:
+   You can open a terminal by pressing Ctrl + Alt + T on the keyboard or by searching for "Terminal" in the application launcher.
+
+B) Edit the SSH server configuration file:
+   In the terminal, run the following command to open the SSH server configuration file using a text editor:
+   sudo vi /etc/ssh/sshd_config
+
+C) Locate the PasswordAuthentication line:
+    Inside the sshd_config file, use the arrow keys to navigate or search for the line that starts with PasswordAuthentication.
+    By default, the value is typically set to no or commented out with a #.
+    Change the value of PasswordAuthentication:
+    Uncomment the line by removing the # at the beginning (if present).
+
+D) Change the value to yes, so it looks like:
+    PasswordAuthentication yes
+
+E) Save the changes and exit the text editor:
+   In the vi editor, press the Esc key to enter command mode.
+   Type :wq to save the changes and exit the editor.
+
+F) Restart the SSH service:
+   To apply the changes, restart the SSH service by running the following command in the terminal:
+   Copy code
+   sudo service ssh restart
+   After restarting the SSH service, password authentication should be enabled on your Ubuntu system. Now, you can use a password to authenticate when connecting to the system via SSH.
+==================================================================================================================================
+How do u list all th user in th system?
+1) cat etc/passwd
+2) uid
+==================================================================================================================================
+how to add the user to the sudo group?
+
+1) Open a terminal:
+    You can open a terminal by pressing Ctrl + Alt + T on the keyboard or by searching for "Terminal" in 
+    the application launcher.
+
+2) Run the usermod command:
+    In the terminal, type the following command:
+    Copy code
+   sudo usermod -aG sudo username
+   Replace "username" with the username of the user you want to add to the sudo group. For example, if you want to add 
+   the user "john" to the sudo group, the command would be: sudo usermod -aG sudo john.
+   The -aG option ensures that the user is added to the specified group (sudo) without removing them from other groups.
+
+ 3) Verify the user's group membership:
+   You can verify that the user has been added to the sudo group by running the following command:
+    groups username
+
+  Replace "username" with the username of the user. It will display a list of groups the user belongs to, including the sudo group.
+  Once the user is added to the sudo group, they will have administrative privileges and can use the sudo command to execute
+commands with elevated privileges.
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
+
 
 write a script which accepts file or folder, if its folder delete it else print "this is a file"?
 ==================================================================================================================================
