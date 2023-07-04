@@ -1,1 +1,22 @@
+how the shell script will behave with single and double inverted comma
 
+In shell scripting, single quotes (' ') and double quotes (" ") are used to define strings, and they have different behaviors:
+
+Single quotes (' '):
+
+--> When a string is enclosed in single quotes, the shell treats it as a literal string.
+--> Variable substitution and command substitution within single quotes are not performed.
+--> Special characters within single quotes are treated as ordinary characters and are not interpreted by the shell.
+Example: 'Hello World' or 'My name is $name' - the variable $name will not be expanded.
+
+Double quotes (" "):
+
+When a string is enclosed in double quotes, the shell performs variable substitution and command substitution within the string.
+Variables within double quotes are expanded to their values.
+Special characters within double quotes, such as $, !, or backticks (`), are interpreted by the shell.
+Example: "Hello $name" - the variable $name will be expanded to its value.
+
+=================================================================================================================================
+wow to get the process id of the script?
+echo "${$}"  --> process id
+echo "${ppid}"  --> parent process id
