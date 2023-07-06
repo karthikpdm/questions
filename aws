@@ -1,3 +1,78 @@
+IAAS,PAASAND SAAS?
+
+SAAS, or Software as a Service, is a cloud computing model in which software applications are provided and delivered to 
+users over the internet as a service. Instead of installing and running software on individual computers or local servers, 
+users can access the software through a web browser or a thin client.
+
+Here are some key characteristics and advantages of SAAS:
+
+Accessibility: SAAS applications are accessible from anywhere with an internet connection, allowing users to access and 
+use the software on various devices and operating systems.
+
+Scalability: SAAS applications are designed to be scalable, allowing businesses to easily accommodate changes in user demand. 
+The provider can handle the infrastructure and resource scaling, so users don't need to worry about capacity planning or 
+hardware upgrades.
+
+Cost-Effective: SAAS eliminates the need for upfront hardware and software investments, as well as ongoing maintenance and 
+updates. Users typically pay a subscription fee based on usage, which can be more cost-effective compared to purchasing and 
+managing software licenses.
+
+Easy Maintenance and Updates: SAAS providers are responsible for maintaining the software, applying security patches, and 
+releasing updates. This reduces the burden on users, as they can always access the latest version of the software without 
+needing to perform manual updates.
+
+Multi-Tenancy: SAAS applications are built to serve multiple users or organizations on the same infrastructure. This multi-tenancy 
+approach allows for efficient resource utilization and cost-sharing among users.
+
+Integration: SAAS applications often provide APIs (Application Programming Interfaces) that allow integration with other systems 
+and services. This enables businesses to connect their SAAS applications with existing software or third-party services to 
+streamline workflows and enhance productivity.
+-------------------------------------------------------------------------------------------------------------------
+PAAS 
+
+PaaS, or Platform as a Service, is a cloud computing model that provides a platform and environment 
+for developers to build, deploy, and manage applications without worrying about the underlying 
+infrastructure. In a PaaS model, the cloud provider manages the hardware, operating systems, networking, 
+and other infrastructure components, allowing developers to focus on writing code and developing applications.
+
+Eg)
+With Elastic Beanstalk, you can quickly deploy and manage applications in the AWS Cloud without having to 
+learn about the infrastructure that runs those applications.
+----------------------------------------------------------------------------------------------------------------
+IAAS
+
+IaaS, or Infrastructure as a Service, is a cloud computing model that provides virtualized computing 
+resources over the internet. In an IaaS model, the cloud provider offers a complete infrastructure stack,
+including virtual machines, storage, networks, and other fundamental computing resources, which can be 
+provisioned and managed by users.
+
+EC2
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+
+=====================================================================================================================================
+
+
 What are roles and policies in AWS IAM?
 Vpc endpoint in AWS?
 =====================================================================================================================================
