@@ -1,3 +1,54 @@
+how do u deploy the application to the different environment?
+
+so like in my project we created the branches for the different environment like DEV,QA,PRE PROD and PROD
+in our project we configured the poll scm for the dev environment and webhooks for the remaining environment.
+
+
+so the developer will work for the changes and he make the commit to the deveopment branch and we configured the 
+poll scm to trigger the job since it create the more load on the jenkinds as per our requirment we configured this
+since the developer are regularly going to commit to the dev branch
+
+so after we merge the changes to the qa from the dev the qa job will triggered with the webhooks.
+
+================================================================================================================
+how to find the location where the maven is installed
+
+To find the location where Maven is installed on your system, you can use the mvn --version command in 
+the terminal or command prompt. This will display information about your Maven installation, including the
+installation path.
+
+Here's how to do it:
+
+Open a terminal or command prompt on your system.
+
+Type the following command and press Enter:
+mvn --version
+Look for the "Maven home" or "Maven Installation" entry in the output. This will indicate the location 
+where Maven is installed on your system.
+
+The output will look something like this:
+Apache Maven x.x.x
+Maven home: /path/to/maven
+...
+In the above example, /path/to/maven is the installation location of Maven on your system.
+
+
+
+The default location where Maven is installed can vary depending on the operating system and the method 
+you used to install it. Here are some common default installation locations for Maven on different platforms:
+
+Linux (using package manager):
+
+If installed via package manager (e.g., apt or yum): Maven will typically be installed in the /usr/share/maven 
+directory, and the executables will be in /usr/bin.
+Linux (manual installation):
+
+If you manually downloaded and installed Maven: The installation location is typically in the directory where
+you extracted the Maven archive. For example, /opt/apache-maven-<version>.
+
+
+
+============================================================================================================
 How to save only last 5 builds of jenkins job?
 As:using build discarder
 
